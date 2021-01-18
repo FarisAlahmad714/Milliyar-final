@@ -19,6 +19,14 @@ h4{
     float: right;
 }
 
+.introbutton{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color:WHITE;
+    cursor: default;
+}
+
 .box-element{
     box-shadow:hsl(0, 0%, 80%) 0 0 16px;
     background-color: #fff;
