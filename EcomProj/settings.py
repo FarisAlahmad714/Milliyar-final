@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['milliyar-final.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'store',
-    'embed_video',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
