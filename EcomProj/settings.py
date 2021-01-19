@@ -26,7 +26,7 @@ SECRET_KEY = '+g-@em!cu@qsdtj4ek8-y%z*2o7-r7m($zcg-tk5bg7$f%-w4*'
 DEBUG = True
 # True
 
-ALLOWED_HOSTS = ['milliyar-final.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
