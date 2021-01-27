@@ -113,6 +113,7 @@ h4{
 
 .chg-quantity:hover{
     opacity: .6;
+    transform: scale(1.03);
 }
 
 

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #Stripe
+    'stripe',
 
 
 ]
@@ -137,3 +139,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'store/static/images')
+
+STRIPE_PUBLIC_KEY = 'pk_test_51ICUkfBBFg9oIquvEDXfjORvgkYwcCH1z63Ie1Mi2qEMjfzJmbebTHGDyxChCLbfdSUxwzdzxUydqnvsxjhX1OJc00EqcUa6lI'
+
+STRIPE_PRIVATE_KEY='sk_test_51ICUkfBBFg9oIquvx67waMkosBs4BT9985EinKKSYh3bV6PlcMniPgm9hmLwCeENmkXtsurb0xHAu4CTiTsMsvBF002g2lF0Es'

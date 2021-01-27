@@ -5,7 +5,10 @@ from django.http import JsonResponse
 import json
 import datetime
 from . utils import cookieCart, cartData, guestOrder
+# from django.conf import settings
 # Create your views here.
+
+# price_1ICV7qBBFg9oIquvaWQhDmqP
 
 
 def index(request):
@@ -38,6 +41,22 @@ def cart(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
+
+
+    # stripe.api_key =settings.STRIPE_PRIVATE_KEY
+
+    # stripe.checkout.Session.create(
+    #     success_url="https://example.com/success",
+    #     cancel_url="https://example.com/cancel",
+    #     payment_method_types=["card"],
+    #     line_items=[
+    #         {
+    #         "price": "price_H5ggYwtDq4fbrJ",
+    #         "quantity": 2,
+    #         },
+    #     ],
+    #     mode="payment",
+    # )
 
 
 def checkout(request):
