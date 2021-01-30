@@ -18,7 +18,14 @@ h1,h2,h3,h4,h5,h6{
 h4{
     float: right;
 }
-
+iframe {
+    width: 100px;
+    height: 50px;
+    margin: auto;
+    background-color: #777;
+    display: block;
+    border-style:none;
+}
 .introbutton{
     display: block;
     text-align: center;

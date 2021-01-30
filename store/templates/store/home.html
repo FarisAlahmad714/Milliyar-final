@@ -101,12 +101,21 @@
           <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'home' %}">HOME</a></button>
           <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'shop' %}">SHOP</a></button>
           <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'cart' %}">CART</a></button>
+          <div>
+            <iframe src="https://www.youtube.com/embed/dvPfmcGtmrI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
+        
+
+        <!-- LOOKS GOOD FOR MOBILE VIEW BUT NOT DESKTOP -->
+          <!-- <iframe frameborder="0"  src="https://www.youtube.com/embed/DLzxrzFCyOs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      
       </div>
 
       
     <div class="container">
 
+        
         {% block content %}
 
         {% endblock content %}
