@@ -1,21 +1,128 @@
-{% extends 'store/main.html' %}
-{% load static %}
-{% block content %}
-     <div class="row">
-          {% for product in products %}
-          <div class="col-lg-4">
-               <img class="thumbnail" src="{{product.imageURL}}" alt="">
-               <div class="box-element product">
-                    <h6><strong>{{product.name}}</strong></h6>
-                    <hr>
-                    <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-                    <!-- <a href="" class="btn btn-outline-success">View</a> -->
-                    <!-- add product id view pages -->
-                    <h4 style="display: inline-block,">${{product.price | floatformat:2}}</h4>
-               </div>
-          </div>
-               {% endfor %}
-          </div>
-          
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milliyar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' type='image/x-icon' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-{% endblock content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">    
+
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+
+    <!-- ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3485Y34LHZ');
+    </script>
+
+    
+
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+
+      function getToken(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+      var csrftoken = getToken('csrftoken');
+
+      function getCookie(name){
+        var cookieArr = document.cookie.split(";");
+
+
+        for(var i=0 ; i< cookieArr.length;i++ ){
+          var cookiePair = cookieArr[i].split("=");
+
+          if(name == cookiePair[0].trim()){
+            return decodeURIComponent(cookiePair[1]);
+          }
+        }
+        return null;
+      }
+      var cart = JSON.parse(getCookie('cart'))
+      if ( cart == undefined){
+        cart = {}
+        console.log('Cart was created ')
+        document.cookie= 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+      }
+      console.log('Cart:', cart)
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Milliy<img id="logo"src="{% static 'images/logo.jpg' %}"></img>r</a>
+        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Link</a>
+            </li> -->
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+                <!-- <a href="#"class="btn btn-warning">Login</a> -->
+            
+                <a href="{% url 'cart' %}">
+                <img  id="cart-icon" src="{% static 'images/cartimg.png' %}" alt="">
+                   </a>
+                  <p id="cart-total">{{cartItems}}</p>
+   
+               </div>
+         
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col text-center">
+          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'home' %}">HOME</a></button>
+          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'shop' %}">SHOP</a></button>
+          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'cart' %}">CART</a></button>
+        </div>
+      </div>
+
+      
+    <div class="container">
+
+        {% block content %}
+
+        {% endblock content %}
+
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
+  <div>
+    <div id="fuckcss">
+      &copy;2020 All rights reserved to Milliy<img id="logo"src="{% static 'images/logo.jpg' %}">r Ltd. </div>
+</div>
+</body>
+</html>

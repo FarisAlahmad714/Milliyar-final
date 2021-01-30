@@ -11,7 +11,7 @@ from . utils import cookieCart, cartData, guestOrder
 # price_1ICV7qBBFg9oIquvaWQhDmqP
 
 
-def index(request):
+def home(request):
     context = {}
     # return HttpResponse(" YO")
     return render(request, 'store/home.html', context)
@@ -23,14 +23,14 @@ def main(request):
     return render(request, 'store/main.html', context)
 
 
-def home(request):
+def shop(request):
 
     data = cartData(request)
     cartItems = data['cartItems']
 
     products = Product.objects.all()
     context = {"products": products, 'cartItems': cartItems}
-    return render(request, 'store/home.html', context)
+    return render(request, 'store/shop.html', context)
 
 
 def cart(request):

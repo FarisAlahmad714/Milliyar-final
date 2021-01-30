@@ -13,6 +13,18 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
 
+    <!-- ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3485Y34LHZ');
+    </script>
+
+    
+
     <script type="text/javascript">
       var user = '{{request.user}}'
 
@@ -86,8 +98,8 @@
       </nav>
       <div class="row">
         <div class="col text-center">
-          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'index' %}">HOME</a></button>
-          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'home' %}">SHOP</a></button>
+          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'home' %}">HOME</a></button>
+          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'shop' %}">SHOP</a></button>
           <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'cart' %}">CART</a></button>
         </div>
       </div>
