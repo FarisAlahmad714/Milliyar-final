@@ -7,9 +7,6 @@ __pycache__
 db.sqlite3
 media
 
-# Specific files #
-##################
-EcomProj/settings.py
 
 # Backup files # 
 *.bak 
