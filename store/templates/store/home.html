@@ -7,11 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     {% load static %}
     <link rel="shortcut icon" href="{% static 'images/logo.ico' type='image/x-icon' %}">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">    
-
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+
+    <!-- CAROUSEL JQUERY AND JS-->
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $("#carousel").carousel();
+    </script> -->
 
     <!-- ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
@@ -70,7 +83,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Milliy<img id="logo"src="{% static 'images/logo.jpg' %}"></img>r</a>
+      <a class="navbar-brand" href="{% url 'home' %}"><img class="materialboxed" width="150px" style="margin-bottom: 7px;" src="{% static 'images/29.png' %}"></a>
         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -98,9 +111,9 @@
       </nav>
       <div class="row">
         <div class="col text-center">
-          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'home' %}">HOME</a></button>
-          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'shop' %}">SHOP</a></button>
-          <button type="button" class="btn btn-dark"><a class="introbutton" href="{% url 'cart' %}">CART</a></button>
+          <a class="btn-floating btn-large black pulse" href="{% url 'home' %}"><i class="large material-icons">home</i></a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/6.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}"><i class="material-icons">shopping_cart</i></a>
           <div>
             <!-- <iframe src="https://www.youtube.com/embed/dvPfmcGtmrI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
           </div>
@@ -112,10 +125,48 @@
       
       </div>
 
-      
-    <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+  
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {% for p in posts %}
+            {% if forloop.counter == 1 %}
+            <div class="item active">
+            {% else %}
+            <div class="item">
+            {% endif %}
+                <img src="{{ p.headimage.url }}" alt="Image" width="460" height="345">
+          <div class="carousel-caption">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.teaser }}</p>
+          </div>
+            </div>
+            {% endfor %}
+            </div>
+  
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+  
 
-        
+    
+    </div>
         {% block content %}
 
         {% endblock content %}
@@ -131,7 +182,10 @@
   <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
   <div>
     <div id="fuckcss">
-      &copy;2020 All rights reserved to Milliy<img id="logo"src="{% static 'images/logo.jpg' %}">r Ltd. </div>
+      &copy;2020 All rights reserved to <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/29.png' %}">  Ltd. </div>
 </div>
+<script>
+  $('.carousel').carousel()
+</script>
 </body>
 </html>

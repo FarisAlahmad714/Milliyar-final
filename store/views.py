@@ -12,7 +12,10 @@ from . utils import cookieCart, cartData, guestOrder
 
 
 def home(request):
-    context = {}
+    obj = Carousel.objects.all()
+    context = {
+        'obj':obj
+    }
     # return HttpResponse(" YO")
     return render(request, 'store/home.html', context)
 
