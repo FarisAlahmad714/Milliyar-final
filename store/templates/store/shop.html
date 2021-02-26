@@ -15,9 +15,25 @@
                     <h4 style="display: inline-block,">${{product.price | floatformat:2}}</h4>
                </div>
                </div>
+               <hr>
           </div>
                {% endfor %}
           </div>
           
 
 {% endblock content %}
+<div class="loader">
+     <h4>Please Wait..</h4>
+     <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+   </div>
+   
+   <script>
+    
+     window.addEventListener("load",function(){
+       const loader = document.querySelector(".loader");
+       loader.className += " hidden"
+     })
+      // $(window).on("load",function(){
+      //   $(".loader-wrapper").fadeOut("slow");
+      // })
+    </script>

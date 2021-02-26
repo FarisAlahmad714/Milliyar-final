@@ -6,7 +6,7 @@
     <title>Milliyar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     {% load static %}
-    <link rel="shortcut icon" href="{% static 'images/logo.ico' type='image/x-icon' %}">
+    <link rel="shortcut icon" href="{% static 'images/white.ico' type='image/x-icon' %}">
      <!-- Compiled and minified CSS -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -131,20 +131,20 @@
         <div id="slider">
           <div class="slide slide1">
             <div class="slide-content">
-              <img src="{% static 'images/6.png' %}"  width='25%'alt="">
-              <span>Image One</span>
+              <img src="{% static 'images/transparentproto.png' %}"  width='25%'alt="">
+              <span></span>
             </div>
           </div>
           <div class="slide slide2">
             <div class="slide-content">
               <img src="{% static 'images/6.png' %}"  width='25%'alt="">
-              <span>Image Two</span>
+              <span>Two</span>
             </div>
           </div>
           <div class="slide slide3">
             <div class="slide-content">
               <img src="{% static 'images/6.png' %}"  width='25%'alt="">
-              <span>Image Three</span>
+              <span>Three</span>
             </div>
           </div>
         </div>
@@ -159,6 +159,22 @@
 
     </div>
    
+    <div class="loader">
+      <h4>Please Wait..</h4>
+      <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+    </div>
+    
+    <script>
+     
+      window.addEventListener("load",function(){
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden"
+      })
+       // $(window).on("load",function(){
+       //   $(".loader-wrapper").fadeOut("slow");
+       // })
+     </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -167,7 +183,7 @@
   
   <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
   <div>
-    <div id="fuckcss">
+    <div id="footer">
       &copy;2020 All rights reserved to <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/29.png' %}">  Ltd. </div>
 </div>
 <script>
