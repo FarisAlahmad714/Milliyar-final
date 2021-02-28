@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+
      <div class="row">
           {% for product in products %}
           <div class="col-lg-4">
@@ -9,6 +10,14 @@
                <div class="box-element product">
                     <h6><strong>{{product.name}}</strong></h6>
                     <hr>
+                    {% for productcolor in productcolors %}
+                    <div class="changeColor">
+                         <div class="color">Available Colors</div>
+                         <span class="space active" name="Space Black" url="">{{productcolor.color}}</span>
+                         <span class="pink" name="Space Pink" url="">{{productcolor.color}}</span>
+                         <span class="yellow" name="Space Yellow" url="">{{productcolor.color}}</span>
+                    </div>
+                    {% endfor %}
                     <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
                     <!-- <a href="" class="btn btn-outline-success">View</a> -->
                     <!-- add product id view pages -->
@@ -20,15 +29,30 @@
                {% endfor %}
           </div>
           
-
+          <img src= alt="">
 {% endblock content %}
 <div class="loader">
-     <h4>Please Wait..</h4>
+     <h4>..</h4>
      <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+     <h4>..</h4>
    </div>
    
+<!-- Color changer script -->
+
+<script>
+     $(document).ready(function () {
+       $('.changeColor span').click(function() {
+         $('.changeColor span').removeClass('active');
+         $(this).addClass('active');
+         $('.pic').css('background-image' , $(this).attr("src"));
+         $('.name').text($(this).attr(".name"))
+         $('.name , .color , .btn , .price , id').css('color' , $(this));
+       });
+     })
+   </script>
+   
+   <!-- Loader -->
    <script>
-    
      window.addEventListener("load",function(){
        const loader = document.querySelector(".loader");
        loader.className += " hidden"

@@ -44,15 +44,9 @@ body {
   }
 
 
-#logo{
-    
-    width: 45px;
+.materialboxed{
+  cursor:pointer;
 }
-/* 
-#logoname{
-    margin-left: 500px;
-    color: white;
-} */
 
 /* CAROUSEL */
 #slider,
@@ -148,6 +142,7 @@ body {
     -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+  
 } 
 
 .product{
@@ -158,6 +153,73 @@ body {
     background-color: black!important;
 }
 
+/* PRODUCT COLOR CHANGER */
+.changeColor{
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.changeColor div{
+  margin: 0;
+  margin-right: auto;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4b7bec;
+  transition: 0.5 linear;
+  line-height: -1.5;
+}
+
+.changeColor span{
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin: 0 10px;
+  border-radius: 50%;
+  cursor:pointer;
+  z-index:10;
+}
+
+
+.space{
+ background: #343d52;
+ animation: activeButton 1s linear alternate infinite;
+}
+
+.pink{
+  background: #FFAEC8;
+  animation: activeButton 1s linear alternate infinite;
+}
+
+.yellow{
+  background: gold;
+  animation: activeButton 1s linear alternate infinite;
+}
+
+@keyframes activeButton
+{
+  50%{
+    transform: scale(0.7);
+  }
+}
+
+.changeColor .active::after
+{
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border: 2px solid #7777;
+  border-radius: 50%;
+  box-sizing: border-box;
+  left: -4px;
+  top:-4px;
+  content: '';
+}
+
+
+
+/* CART */
 #cart-icon{
     width:25px;
     display: inline-block;
@@ -242,16 +304,3 @@ body {
     width: 100%;
     position: fixed
 }
-/* 
-display :flex;
-justify-content :center;
-align-items:center;
-width:100%;
-background:black;
-color:wheat;
-*/
-/* @media screen and (min-width: 992px) {
-    #navbar-toggler {
-git i display: none;
-        }
-} */

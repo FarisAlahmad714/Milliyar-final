@@ -3,13 +3,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponse
 # Create your models here.
 
-class Carousel(models.Model):
-    image = models.ImageField(upload_to='store/static/images/%y/%m/%d/')
-    title = models.CharField(max_length= 150)
-    caption = models.CharField(max_length=200)
-    
-    def __str__(self):
-        return self.title
     
 class Customer(models.Model):
     user = models.OneToOneField(
@@ -38,7 +31,17 @@ class Product(models.Model):
             url = ''
         return url
 
+class ProductColor(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,)
+    color = models.CharField(max_length=120)
+    active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.color
+
+    def get_absolute_url(self):
+         return self.product.get_absolute_url()
+     
 class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, null=True, blank=True)

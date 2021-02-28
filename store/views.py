@@ -12,12 +12,8 @@ from . utils import cookieCart, cartData, guestOrder
 
 
 def home(request):
-    obj = Carousel.objects.all()
-    context = {
-        'obj':obj
-    }
     # return HttpResponse(" YO")
-    return render(request, 'store/home.html', context)
+    return render(request, 'store/home.html')
 
 
 def main(request):

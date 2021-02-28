@@ -14,10 +14,21 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/jquery.exzoom.css' %}">  
     <link rel="stylesheet" href="{% static 'css/main.css' %}">    
 
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <!-- Zoom Jquery -->
+    <script src="jquery.exzoom.js"></script>
+    <script>
+      $(function(){
 
+        $("#exzoom").exzoom({
+         // options here
+        });
+
+      });
+    </script>
     <!-- ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
     <script>
@@ -75,7 +86,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}"><img class="materialboxed" width="150px" style="margin-bottom: 7px;" src="{% static 'images/29.png' %}"></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img class="materialboxed" width="150px" style="margin-bottom: 7px;" src="{% static 'images/hflogo.png' %}"></a>
         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -104,7 +115,7 @@
       <div class="row">
         <div class="col text-center">
           <a class="btn-floating btn-large black pulse" href="{% url 'home' %}"><i class="large material-icons">home</i></a>
-          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/6.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/shopbutton.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
           <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}"><i class="material-icons">shopping_cart</i></a>
         </div>
       </div>
@@ -119,8 +130,9 @@
     </div>
    
     <div class="loader">
-      <h4>Please Wait..</h4>
+      <h4>..</h4>
       <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+      <h4>..</h4>
     </div>
     
     <script>
@@ -142,7 +154,7 @@
   <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
   <div>
     <div id="footer">
-      &copy;2020 All rights reserved to <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/29.png' %}">  Ltd. </div>
+      &copy;2020 All rights reserved to <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/hflogo.png' %}">  Ltd. </div>
 </div>
 </body>
 </html>
