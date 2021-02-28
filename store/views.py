@@ -94,6 +94,9 @@ def updateItem(request):
 
     return JsonResponse('Item was added ', safe=False)
 
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 # @csrf_exempt
 def processOrder(request):
@@ -126,5 +129,20 @@ def processOrder(request):
             zipcode=data['shipping']['zipcode'],
 
         )
-
+        
+    #EMAIL ATTEMPT 
+    # if order.shipping == True:
+    #     template = render_to_string('store/tyemail.html' , {'name': request.user.first_name})
+        
+    #     email = EmailMessage (
+    #         'subject'
+    #         'body',
+    #         settings.EMAIL_HOST_USER,
+    #         [request.user.email]
+    #         )
+        
+    #     email.fail_silently=False
+    #     email.send()
+    
+       
     return JsonResponse('Payment Completed', safe=False)

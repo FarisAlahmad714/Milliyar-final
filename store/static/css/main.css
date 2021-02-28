@@ -154,7 +154,30 @@ body {
 }
 
 /* PRODUCT COLOR CHANGER */
-.changeColor{
+#btn1{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000000;
+
+}
+#btn2{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFAEC8;
+
+}
+#btn3{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FDECA6 ;
+
+}
+
+
+/* .changeColor{
   display: flex;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -217,7 +240,7 @@ body {
   content: '';
 }
 
-
+ */
 
 /* CART */
 #cart-icon{

@@ -8,16 +8,32 @@
                <img class="thumbnail" src="{{product.imageURL}}" alt="">
                <div class="z-depth-5">
                <div class="box-element product">
-                    <h6><strong>{{product.name}}</strong></h6>
+                    <h6 id="pic"><strong>{{product.name}}</strong></h6>
                     <hr>
-                    {% for productcolor in productcolors %}
+                    <!-- <div>
+                         <img id="pic" src="{% static 'images/SPACEBLACK.png' %}" width="400px">
+
+
+
+                    </div> -->
+                    <div>
+                         <button id="btn1" onclick="change1()"></button>
+                         <button id="btn2" onclick="change2()"></button>
+                         <button  id="btn3" onclick="change3()"></button>
+                         <!-- <button id="btn4" onclick="change4()"></button>
+                         <button  id="btn5" onclick="change5()"></button> -->
+
+
+                    </div>
+
+                    <!-- {% for productcolor in productcolors %}
                     <div class="changeColor">
                          <div class="color">Available Colors</div>
                          <span class="space active" name="Space Black" url="">{{productcolor.color}}</span>
                          <span class="pink" name="Space Pink" url="">{{productcolor.color}}</span>
                          <span class="yellow" name="Space Yellow" url="">{{productcolor.color}}</span>
                     </div>
-                    {% endfor %}
+                    {% endfor %} -->
                     <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
                     <!-- <a href="" class="btn btn-outline-success">View</a> -->
                     <!-- add product id view pages -->
@@ -38,26 +54,46 @@
    </div>
    
 <!-- Color changer script -->
-
 <script>
-     $(document).ready(function () {
-       $('.changeColor span').click(function() {
-         $('.changeColor span').removeClass('active');
-         $(this).addClass('active');
-         $('.pic').css('background-image' , $(this).attr("src"));
-         $('.name').text($(this).attr(".name"))
-         $('.name , .color , .btn , .price , id').css('color' , $(this));
-       });
-     })
-   </script>
+     function change1()
+     {
+
+document.getElementById('pic').src="{% static 'images/SPACEPINK.png' %}";
+
+     }
+
+     function change2()
+     {
+
+document.getElementById('pic').src="{% static 'images/SPACEYELLOW.png' %}";
+
+     }
+
+     function change3()
+     {
+
+</script>
+// <!-- <script>
+//      $(document).ready(function () {
+//        $('.changeColor span').click(function() {
+//          $('.changeColor span').removeClass('active');
+//          $(this).addClass('active');
+//          $('.pic').css('background-image' , $(this).attr("src"));
+//          $('.name').text($(this).attr(".name"))
+//          $('.name , .color , .btn , .price , id').css('color' , $(this));
+//        });
+//      })
+//    </script>
+//     -->
+//    <!-- Loader -->
    
-   <!-- Loader -->
    <script>
      window.addEventListener("load",function(){
        const loader = document.querySelector(".loader");
        loader.className += " hidden"
      })
-      // $(window).on("load",function(){
-      //   $(".loader-wrapper").fadeOut("slow");
-      // })
+      $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+      })
+     }
     </script>
