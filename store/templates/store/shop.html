@@ -2,24 +2,27 @@
 {% load static %}
 {% block content %}
 
-     <div class="row">
-          {% for product in products %}
-          <div class="col-lg-4">
-               <img class="thumbnail" src="{{product.imageURL}}" alt="">
-               <div class="z-depth-5">
+<div class="row">
+     {% for product in products %}
+     <div class="col-lg-4">
+          <img class="thumbnail" src="{{product.imageURL}}" alt="">
+          <div class="z-depth-5">
                <div class="box-element product">
-                    <h6 id="pic"><strong>{{product.name}}</strong></h6>
+                    <!-- 
+                         Changed this ID so that the onclick funcions would apply to the correct item
+                         Id's should all be unique, classes are a great tool if you want to have multiple tags
+                         identified by the same name 
+                    -->
+                    <h6 id="pic-title"><strong>{{product.name}}</strong></h6>
                     <hr>
-                    <!-- <div>
+                    <div>
                          <img id="pic" src="{% static 'images/SPACEBLACK.png' %}" width="400px">
 
-
-
-                    </div> -->
+                    </div>
                     <div>
-                         <button id="btn1" onclick="change1()"></button>
-                         <button id="btn2" onclick="change2()"></button>
-                         <button  id="btn3" onclick="change3()"></button>
+                         <button id="btn1" onclick="changeY()">Yellow</button>
+                         <button id="btn2" onclick="changeP()">Pink</button>
+                         <button id="btn3" onclick="changeB()">Black</button>
                          <!-- <button id="btn4" onclick="change4()"></button>
                          <button  id="btn5" onclick="change5()"></button> -->
 
@@ -39,41 +42,41 @@
                     <!-- add product id view pages -->
                     <h4 style="display: inline-block,">${{product.price | floatformat:2}}</h4>
                </div>
-               </div>
-               <hr>
           </div>
-               {% endfor %}
-          </div>
-          
-          <img src= alt="">
+          <hr>
+     </div>
+     {% endfor %}
+</div>
 {% endblock content %}
 <div class="loader">
      <h4>..</h4>
-     <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+     <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
      <h4>..</h4>
-   </div>
-   
+</div>
+
 <!-- Color changer script -->
 <script>
-     function change1()
-     {
+     function changeP() {
 
-document.getElementById('pic').src="{% static 'images/SPACEPINK.png' %}";
-
-     }
-
-     function change2()
-     {
-
-document.getElementById('pic').src="{% static 'images/SPACEYELLOW.png' %}";
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEPINK.png' %}";
 
      }
 
-     function change3()
-     {
+     function changeY() {
 
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEYELLOW.png' %}";
+
+     }
+
+     function changeB() {
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEBLack.png%}"
+     }
 </script>
-// <!-- <script>
+<!-- 
+     <script>
 //      $(document).ready(function () {
 //        $('.changeColor span').click(function() {
 //          $('.changeColor span').removeClass('active');
@@ -85,15 +88,15 @@ document.getElementById('pic').src="{% static 'images/SPACEYELLOW.png' %}";
 //      })
 //    </script>
 //     -->
-//    <!-- Loader -->
-   
-   <script>
-     window.addEventListener("load",function(){
-       const loader = document.querySelector(".loader");
-       loader.className += " hidden"
-     })
-      $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("slow");
-      })
-     }
-    </script>
+<!-- Loader -->
+
+<script>
+          window.addEventListener("load", function () {
+               const loader = document.querySelector(".loader");
+               loader.className += " hidden"
+          })
+          $(window).on("load", function () {
+               $(".loader-wrapper").fadeOut("slow");
+          })
+     
+</script>
