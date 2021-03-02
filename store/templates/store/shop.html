@@ -1,39 +1,51 @@
 {% extends 'store/main.html' %}
 {% load static %}
+{% load static %}
+   <script src="{% static 'js/colorchanger.js' %}" type="text/javascript"></script>
 {% block content %}
 
      <div class="row">
           {% for product in products %}
           <div class="col-lg-4">
-               <img class="thumbnail" src="{{product.imageURL}}" alt="">
+               
+               <img id="pic-thumbnail" class="thumbnail" id="pic" src="{{product.imageURL}}" alt="">
+               <img id="pic-thumbnail" src="{% static 'images/SPACEBLACK.png' %}" alt="" width="100px">
                <div class="z-depth-5">
                <div class="box-element product">
-                    <h6 id="pic"><strong>{{product.name}}</strong></h6>
+                    <h6 ><strong>{{product.name}}</strong></h6>
                     <hr>
+                    <div  id="slide-wrapper">
+                        <i class="material-icons" id="slideLeft" class="arrow-left">arrow_back</i>
+
+                         <div id="product-slider">
+                              <img class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
+                              <img class="slider-pics" width ="40px"src="{% static 'images/SPACEPINK.png' %}">
+                              <img class="slider-pics" width ="40px" src="{% static 'images/SPACEYELLOW.png' %}">
+                              
+                         </div>
+                        <i class="material-icons" id="slideRight" class="arrow-right">arrow_forward</i>
+                    </div>
                     <!-- <div>
                          <img id="pic" src="{% static 'images/SPACEBLACK.png' %}" width="400px">
 
 
 
                     </div> -->
+                    
                     <div>
-                         <button id="btn1" onclick="change1()"></button>
-                         <button id="btn2" onclick="change2()"></button>
-                         <button  id="btn3" onclick="change3()"></button>
-                         <!-- <button id="btn4" onclick="change4()"></button>
-                         <button  id="btn5" onclick="change5()"></button> -->
-
-
+                         <button id="btn1" onclick="changeB()"></button>
+                         <button id="btn2" onclick="changeP()"></button>
+                         <button id="btn3" onclick="changeY()"></button>
                     </div>
 
-                    <!-- {% for productcolor in productcolors %}
-                    <div class="changeColor">
-                         <div class="color">Available Colors</div>
-                         <span class="space active" name="Space Black" url="">{{productcolor.color}}</span>
-                         <span class="pink" name="Space Pink" url="">{{productcolor.color}}</span>
-                         <span class="yellow" name="Space Yellow" url="">{{productcolor.color}}</span>
-                    </div>
-                    {% endfor %} -->
+                         <!-- {% for productcolor in productcolors %}
+                         <div class="changeColor">
+                              <div class="color">Available Colors</div>
+                              <span class="space active" name="Space Black" url="">{{productcolor.color}}</span>
+                              <span class="pink" name="Space Pink" url="">{{productcolor.color}}</span>
+                              <span class="yellow" name="Space Yellow" url="">{{productcolor.color}}</span>
+                         </div>
+                         {% endfor %} -->
                     <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
                     <!-- <a href="" class="btn btn-outline-success">View</a> -->
                     <!-- add product id view pages -->
@@ -53,26 +65,44 @@
      <h4>..</h4>
    </div>
    
+   <!-- Product slider and zoom effect -->
+   <!-- <script type="text/javascript">
+     let thumbnails = document.getElementsByClassName('slider-pic')
+
+     let activeImages = document.getElementsByClassName('active')
+
+     for (var i=0; i < thumbnails.length; i++){
+
+          thumbnails[i].addEventListener('mouseover', function(){
+               console.log(activeImages)
+				
+               if (activeImages.length > 0){
+                    activeImages[0].classList.remove('active')
+               }
+				
+
+               this.classList.add('active')
+               document.getElementById('pic-thumbnail').src = this.src
+          })
+     }
+
+
+     let buttonRight = document.getElementById('slideRight');
+     let buttonLeft = document.getElementById('slideLeft');
+
+     buttonLeft.addEventListener('click', function(){
+          document.getElementById('slider').scrollLeft -= 180
+     })
+
+     buttonRight.addEventListener('click', function(){
+          document.getElementById('slider').scrollLeft += 180
+     })
+
+
+</script> -->
 <!-- Color changer script -->
-<script>
-     function change1()
-     {
 
-document.getElementById('pic').src="{% static 'images/SPACEPINK.png' %}";
-
-     }
-
-     function change2()
-     {
-
-document.getElementById('pic').src="{% static 'images/SPACEYELLOW.png' %}";
-
-     }
-
-     function change3()
-     {
-
-</script>
+   <!-- <script src="{% static 'js/colorchanger.js' %}" type="text/javascript"></script> -->
 // <!-- <script>
 //      $(document).ready(function () {
 //        $('.changeColor span').click(function() {
@@ -95,5 +125,5 @@ document.getElementById('pic').src="{% static 'images/SPACEYELLOW.png' %}";
       $(window).on("load",function(){
         $(".loader-wrapper").fadeOut("slow");
       })
-     }
+     
     </script>

@@ -121,12 +121,77 @@ body {
 }
 
 /* PRODUCT DONT TOUCH */
+/* #pic-thumbnail{
+  
+} */
+
 .introbutton{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color:WHITE;
-    cursor: default;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color:WHITE;
+  cursor: default;
+}
+#slide-wrapper{
+  max-width: 500px;
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+}
+
+
+.arrow{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+.arrow:hover{
+  opacity: .5;
+  width: 35px;
+  height: 35px;
+}
+/* #product-slider{
+  width: 440px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+} */
+/* #product-slider::-webkit-scrollbar {
+  width: 8px;
+
+}
+
+#product-slider::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+
+#product-slider::-webkit-scrollbar-thumb {
+background-color: #dede2e;
+outline: 1px solid slategrey;
+ border-radius: 100px;
+
+}
+
+#product-slider::-webkit-scrollbar-thumb:hover{
+  background-color: #18b5ce;
+} */
+
+.slider-pics{
+  object-fit: cover;
+  max-width: 180px;
+  max-height: 100px;
+  cursor: pointer;
+  opacity: 0.5;
+  margin: 5px;
+  border: 2px solid black;
+}
+.slider-pics:hover{
+  opacity:1;
+}
+.active{
+  opacity: 1;
 }
 
 .box-element{
