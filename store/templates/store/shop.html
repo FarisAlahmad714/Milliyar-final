@@ -4,6 +4,7 @@
    <script src="{% static 'js/colorchanger.js' %}" type="text/javascript"></script>
 {% block content %}
 
+
      <div class="row">
           {% for product in products %}
           <div class="col-lg-4">
@@ -51,18 +52,17 @@
                     <!-- add product id view pages -->
                     <h4 style="display: inline-block,">${{product.price | floatformat:2}}</h4>
                </div>
-               </div>
-               <hr>
           </div>
-               {% endfor %}
-          </div>
-          
-          <img src= alt="">
+          <hr>
+     </div>
+     {% endfor %}
+</div>
 {% endblock content %}
 <div class="loader">
      <h4>..</h4>
-     <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
+     <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
      <h4>..</h4>
+<<<<<<< HEAD
    </div>
    
    <!-- Product slider and zoom effect -->
@@ -72,6 +72,16 @@
      let activeImages = document.getElementsByClassName('active')
 
      for (var i=0; i < thumbnails.length; i++){
+=======
+</div>
+
+<!-- Color changer script -->
+<script>
+     function changeP() {
+
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEPINK.png' %}";
+>>>>>>> 337de701ad9ad6ad2f760b322ba4a6504fc12c1c
 
           thumbnails[i].addEventListener('mouseover', function(){
                console.log(activeImages)
@@ -86,6 +96,7 @@
           })
      }
 
+<<<<<<< HEAD
 
      let buttonRight = document.getElementById('slideRight');
      let buttonLeft = document.getElementById('slideLeft');
@@ -97,13 +108,29 @@
      buttonRight.addEventListener('click', function(){
           document.getElementById('slider').scrollLeft += 180
      })
+=======
+     function changeY() {
+
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEYELLOW.png' %}";
+>>>>>>> 337de701ad9ad6ad2f760b322ba4a6504fc12c1c
 
 
+<<<<<<< HEAD
 </script> -->
 <!-- Color changer script -->
 
    <!-- <script src="{% static 'js/colorchanger.js' %}" type="text/javascript"></script> -->
 // <!-- <script>
+=======
+     function changeB() {
+          var button = document.getElementById('pic');
+          button.src = "{% static 'images/SPACEBLack.png%}"
+     }
+</script>
+<!-- 
+     <script>
+>>>>>>> 337de701ad9ad6ad2f760b322ba4a6504fc12c1c
 //      $(document).ready(function () {
 //        $('.changeColor span').click(function() {
 //          $('.changeColor span').removeClass('active');
@@ -115,6 +142,7 @@
 //      })
 //    </script>
 //     -->
+<<<<<<< HEAD
 //    <!-- Loader -->
    
    <script>
@@ -127,3 +155,17 @@
       })
      
     </script>
+=======
+<!-- Loader -->
+
+<script>
+          window.addEventListener("load", function () {
+               const loader = document.querySelector(".loader");
+               loader.className += " hidden"
+          })
+          $(window).on("load", function () {
+               $(".loader-wrapper").fadeOut("slow");
+          })
+     
+</script>
+>>>>>>> 337de701ad9ad6ad2f760b322ba4a6504fc12c1c
