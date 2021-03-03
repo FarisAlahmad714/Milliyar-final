@@ -19,13 +19,9 @@
                         <i class="material-icons" id="slideLeft" class="arrow-left">arrow_back</i>
 
                          <div id="product-slider">
-                              <img  class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
+                              <img onmousedown="mouseClick()"; class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
                               <img  class="slider-pics" width ="40px"src="{% static 'images/SPACEPINK.png' %}">
                               <img class="slider-pics" width ="40px" src="{% static 'images/SPACEYELLOW.png' %}">
-                              <a href=# id="Clicker">Click here please</a>
-
-                              <button onclick="myFunction()">Click me</button>
-                              <p id="demo"></p>
                          </div>
                         <i class="material-icons" id="slideRight" class="arrow-right">arrow_forward</i>
                     </div>
@@ -67,15 +63,11 @@
      <h4>..</h4>
 </div>
 
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World";
-}
-</script>
+
 <!-- Color changer script -->
 <script type="text/javascript" src="{% static 'js/test.js'%}"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
      let sliderpics = document.getElementsByClassName('slider-pics')
 
      let activeImages = document.getElementsByClassName('active')
@@ -102,7 +94,7 @@ function myFunction() {
      let buttonLeft = document.getElementById('slideLeft');
 
      buttonLeft.addEventListener('click', function(){
-          document.getElementById('slider').scrollLeft -= 180
+          document.getElementById('product-slider').scrollLeft -= 180
      })
 
      buttonRight.addEventListener('click', function(){
@@ -110,7 +102,7 @@ function myFunction() {
      })
 
 
-</script>
+</script> -->
 
 <!-- //      $(document).ready(function () {
 //        $('.changeColor span').click(function() {
