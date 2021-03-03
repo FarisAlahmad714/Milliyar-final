@@ -19,10 +19,13 @@
                         <i class="material-icons" id="slideLeft" class="arrow-left">arrow_back</i>
 
                          <div id="product-slider">
-                              <img class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
-                              <img class="slider-pics" width ="40px"src="{% static 'images/SPACEPINK.png' %}">
+                              <img  class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
+                              <img  class="slider-pics" width ="40px"src="{% static 'images/SPACEPINK.png' %}">
                               <img class="slider-pics" width ="40px" src="{% static 'images/SPACEYELLOW.png' %}">
-                              
+                              <a href=# id="Clicker">Click here please</a>
+
+                              <button onclick="myFunction()">Click me</button>
+                              <p id="demo"></p>
                          </div>
                         <i class="material-icons" id="slideRight" class="arrow-right">arrow_forward</i>
                     </div>
@@ -62,19 +65,24 @@
      <h4>..</h4>
      <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
      <h4>..</h4>
-
-=======
 </div>
 
-<!-- Color changer script -->
 <script>
-     function changeP() {
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+<!-- Color changer script -->
+<script type="text/javascript" src="{% static 'js/test.js'%}"></script>
 
-          var button = document.getElementById('pic');
-          button.src = "{% static 'images/SPACEPINK.png' %}";
+<script type="text/javascript">
+     let sliderpics = document.getElementsByClassName('slider-pics')
 
+     let activeImages = document.getElementsByClassName('active')
 
-          thumbnails[i].addEventListener('mouseover', function(){
+     for (var i=0; i < sliderpics.length; i++){
+
+          sliderpics[i].addEventListener('mouseover', function(){
                console.log(activeImages)
 				
                if (activeImages.length > 0){
@@ -84,6 +92,8 @@
 
                this.classList.add('active')
                document.getElementById('pic-thumbnail').src = this.src
+
+              
           })
      }
 
@@ -96,18 +106,13 @@
      })
 
      buttonRight.addEventListener('click', function(){
-          document.getElementById('slider').scrollLeft += 180
+          document.getElementById('product-slider').scrollLeft += 180
      })
 
-     function changeY() {
 
-          var button = document.getElementById('pic');
-          button.src = "{% static 'images/SPACEYELLOW.png' %}";
+</script>
 
-
-
-
-//      $(document).ready(function () {
+<!-- //      $(document).ready(function () {
 //        $('.changeColor span').click(function() {
 //          $('.changeColor span').removeClass('active');
 //          $(this).addClass('active');
@@ -115,8 +120,8 @@
 //          $('.name').text($(this).attr(".name"))
 //          $('.name , .color , .btn , .price , id').css('color' , $(this));
 //        });
-//      })
-//    </script>
+//      }) -->
+<!-- //    </script> -->
 //     -->
 
 //    <!-- Loader -->
@@ -142,6 +147,4 @@
           $(window).on("load", function () {
                $(".loader-wrapper").fadeOut("slow");
           })
-     }
-     
 </script>

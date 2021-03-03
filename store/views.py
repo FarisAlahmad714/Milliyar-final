@@ -5,7 +5,9 @@ from django.http import JsonResponse
 import json
 import datetime
 from . utils import cookieCart, cartData, guestOrder
+# from django.core.mail import send_mail
 # from django.conf import settings
+
 # Create your views here.
 
 # price_1ICV7qBBFg9oIquvaWQhDmqP
@@ -40,6 +42,18 @@ def cart(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
+
+# def email(request):
+    
+#     if request.method=="POST":
+#         message = request.POST['message']
+        
+#         send_mail('Contact form',
+#                 message,
+#                 settings.EMAIL_HOST_USER,
+#                 ['email'],
+#                 fail_silently=False)
+#         return render(request, 'store/cart.html')
 
 
     # stripe.api_key =settings.STRIPE_PRIVATE_KEY
