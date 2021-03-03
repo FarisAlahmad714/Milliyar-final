@@ -316,7 +316,7 @@ outline: 1px solid slategrey;
 }
 
 #cart-total{
-    display: block;
+    display: inline-block;
     text-align: center;
     color:#fff;
     background-color: #BF2530;
