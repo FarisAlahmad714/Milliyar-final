@@ -31,16 +31,16 @@ class Product(models.Model):
             url = ''
         return url
 
-class ProductColor(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE,)
-    color = models.CharField(max_length=120)
-    active = models.BooleanField(default=True)
+# class ProductColor(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE,)
+#     color = models.CharField(max_length=120)
+#     active = models.BooleanField(default=True)
 
-    def __str__(self):
-        return self.color
+#     def __str__(self):
+#         return self.color
 
-    def get_absolute_url(self):
-         return self.product.get_absolute_url()
+#     def get_absolute_url(self):
+#          return self.product.get_absolute_url()
      
 class Order(models.Model):
     customer = models.ForeignKey(

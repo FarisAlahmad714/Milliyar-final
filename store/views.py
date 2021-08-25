@@ -23,6 +23,8 @@ def main(request):
     # return HttpResponse(" YO")
     return render(request, 'store/main.html', context)
 
+# def product.id(request):
+    
 
 def shop(request):
 

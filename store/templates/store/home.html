@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">    
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
 
+<!-- SCSS -->
+    <!-- <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="less.js" type="text/javascript"></script> -->
     <!-- CAROUSEL JQUERY AND JS-->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -86,9 +89,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'home' %}"><img class="materialboxed" width="150px" style="margin-bottom: 7px;" src="{% static 'images/hflogo.png' %}"></a>
-        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
   
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -102,10 +105,10 @@
           <div class="form-inline my-2 my-lg-0">
                 <!-- <a href="#"class="btn btn-warning">Login</a> -->
             
-                <a href="{% url 'cart' %}">
+                <!-- <a href="{% url 'cart' %}">
                   <i class="material-icons" style="color:black">shopping_cart</i>
                    </a>
-                  <p id="cart-total">{{cartItems}}</p>
+                  <p id="cart-total">{{cartItems}}</p> -->
    
                </div>
          
@@ -116,45 +119,148 @@
           <a class="btn-floating btn-large black pulse" href="{% url 'home' %}"><i class="large material-icons">home</i></a>
           <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/shopbutton.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
           <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}"><i class="material-icons">shopping_cart</i></a>
-
-          <hr> 
-          <div>
-            <!-- <iframe src="https://www.youtube.com/embed/dvPfmcGtmrI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-          </div>
         </div>
+      </div>
+          <hr> 
         
-
-        <!-- LOOKS GOOD FOR MOBILE VIEW BUT NOT DESKTOP -->
-          <!-- <iframe frameborder="0"  src="https://www.youtube.com/embed/DLzxrzFCyOs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <!-- VIDEO CAN BE PLACED HERE  -->
+          
+              <p ALIGN=CENTER>
+                <!-- COLLECTIONScomingSoon -->
+              </p>
+                <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  width="100%"frameborder="0" allowfullscreen></iframe>
+                <hr>
+            <!-- <iframe id="responsive"src="https://www.youtube.com/watch?v=lEVj_lKfkYM?autoplay=1" frameborder="0"  allowfullscreen></iframe> -->
+            <!-- </div> -->
+          <!-- HEADLINER CAN BE PLACED HERE -->
+          <!-- <h1 id="responsive">COLLECTIONS COMING SOON</h1> -->
+      
+          
       
       <!-- CAROUSEL -->
+      
       <div class="wrap">
         <div id="arrow-left" class="arrow"></div>
         <div id="slider">
+          <!-- <p class="split__left-right" ALIGN=CENTER>
+            Collections coming soon 
+          </p> -->
           <div class="slide slide1">
             <div class="slide-content">
-              <img src="{% static 'images/transparentproto.png' %}"  width='25%'alt="">
+              <!-- <img src="{% static 'images/transparentproto.png' %}"  width='30%'alt=""> -->
+              <img src="{% static 'images/1.png' %}"  width='30%'alt="">
               <span></span>
             </div>
           </div>
           <div class="slide slide2">
             <div class="slide-content">
-              <img src="{% static 'images/shopbutton.png' %}"  width='25%'alt="">
-              <span>Two</span>
+              <!-- <img src="{% static 'images/trans2.png' %}"  width='30%'alt=""> -->
+              <img src="{% static 'images/4.png' %}"  width='30%'alt="">
+              <span></span>
             </div>
           </div>
           <div class="slide slide3">
             <div class="slide-content">
-              <img src="{% static 'images/shopbutton.png' %}"  width='25%'alt="">
-              <span>Three</span>
+              <!-- <img src="{% static 'images/trans3.png' %}"  width='30%'alt=""> -->
+              <img src="{% static 'images/5.png' %}"  width='30%'alt="">
+              <span></span>
             </div>
           </div>
+          <!-- ADD MORE SLIDES IF NEEDED -->
+          <!-- <div class="slide slide4">
+            <div class="slide-content">
+              <img src="{% static 'images/44.jpg' %}"  width='25%'alt="">
+              <span></span>
+            </div>
+          </div> -->
         </div>
         <div id="arrow-right" class="arrow"></div>
       </div>
-     <hr>
-    
     </div>
+     <!-- <hr>
+     <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  frameborder="0" allowfullscreen></iframe>
+     <hr> -->
+    <!-- WHO WE ARE -->
+    <div class="split">
+      <div class="split__left-right split__left-right--finn" id="two"  class="container">
+        <img class="split__left-right__avatar avatar--finn"  class="column" class="image"src="{% static 'images/11.jpg' %}" alt="Finn the Human" id="responsive"/>
+        <h3></h3>
+        <p>
+        </p>
+      </div>
+      <div class="split__left-right split__left-right--jake" id="one">
+        <img class="split__left-right__avatar avatar--jake"  class="column"  />
+       
+          <p class="whoweareintro" ALIGN=LEFT>Established in 2021 ,Arabic for 'billion', Milliyar was chosen to represent our brand's effort to bridge the gap between the rich, diverse culture of the East and the vibrant, fast-paced culture of the West. <br>
+
+          <p class="whoweareintro" ALIGN=CENTER>Our client base is primarily made up of the internationally-minded, the third-culture-individuals, and those who don't want to be constrained by one single aesthetic; at Milliyar, we will always emphasize on multicultural unification because it is the pure embodiment of todays world and lifestyle.</br>
+
+          <p class="whoweareintro" ALIGN=RIGHT> A voice for street wear & gear, we offer an array of creative premium clothing wear for different generations of creatives & formed by love for hip-hop , art , skate , cultural fashion ,Milliyar pursues to spread from the Los Angeles community into a global prodigy .</p>
+        </p>
+      </div>
+    </div>
+
+    <!-- VideoComment -->
+    <!-- <iframe id="responsive"src="https://www.youtube.com/embed/dvPfmcGtmrI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+    
+     <!-- LOGO COLORS -->
+     <div class="split">
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/8.png' %}" 
+        width="100px" id="responsive" alt="Finn the Human" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/5.png' %}" 
+        width="100px"  id="responsive" alt="fin the Dog" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/7.png' %}" 
+        width="100px"  id="responsive" alt="fin the Dog" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/4.png' %}" 
+        width="100px"  id="responsive" alt="fin the Dog" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/1.png' %}" 
+        width="100px"  id="responsive" alt="fin the Dog" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+      <span class="split__left-right split__left-right--fin">
+        <img class="split__left-right__avatar avatar--fin" src="{% static 'images/6.png' %}" 
+        width="100px"  id="responsive" alt="fin the Dog" margin: auto;/>
+        <h3></h3>
+        <p>
+        </p>
+      </span>
+    </div>
+    <hr>
+      
+<!--        -->
+    
+        <!-- Mabye color change on who we are title -->
+        <!-- <h5 class ="boxtitles" >WHO WE ARE</h5> -->
+          
+          <!-- <div id="responive">
+           <iframe frameborder="0"   src="{% static 'images/footer.mp4' %}" allow="accelerometer; autoplay; clipboard-write; encrypted-media;  " allowfullscreen></iframe>
+          </div>
+        
+     -->
+ 
         {% block content %}
 
         {% endblock content %}
@@ -173,9 +279,9 @@
         const loader = document.querySelector(".loader");
         loader.className += " hidden"
       })
-       // $(window).on("load",function(){
-       //   $(".loader-wrapper").fadeOut("slow");
-       // })
+       $(window).on("load",function(){
+         $(".loader-wrapper").fadeOut("slow");
+       })
      </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -187,10 +293,12 @@
   <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
   <div>
     <div id="footer">
-      &copy;2020 All rights reserved to <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/hflogo.png' %}">  Ltd. </div>
+      <img class="materialboxed" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/hflogo.png' %}">  Ltd.&copy; </div>
 </div>
 
-<!-- CAROUSEL SCRIPT -->
+
+
+<!-- CAROUSEL SCRIPT DONT TOUCH -->
 <script>
   let sliderImages = document.querySelectorAll(".slide"),
   arrowLeft = document.querySelector("#arrow-left"),

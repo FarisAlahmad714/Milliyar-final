@@ -3,8 +3,8 @@
 //   console.log("clicked");
 // };
 
-function mouseClick() {
-  {
-    document.getElementByClassName("slider-pics").console.log("clicked");
-  }
-}
+// $(document).ready(function () {
+//   $("p").on("click", function () {
+//     console.log("$.");
+//   });
+// });
