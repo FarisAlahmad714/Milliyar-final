@@ -8,7 +8,7 @@ media
 
 # Specific files #
 ##################
-EcomProj/settings.py
+# EcomProj/settings.py
 
 # Backup files # 
 *.bak 
