@@ -41,9 +41,12 @@ def cart(request):
     items = data['items']
     order = data['order']
     cartItems = data['cartItems']
-
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
+
+def productdetails(request,id):
+    product = Product.objects.get(id=id)
+    return render(request,'store/productId.html',{'product':product})
 
 # def email(request):
     
@@ -62,7 +65,7 @@ def cart(request):
 
     # stripe.checkout.Session.create(
     #     success_url="https://example.com/success",
-    #     cancel_url="https://example.com/cancel",
+    #     cancel_url="https://example.com/cancel"
     #     payment_method_types=["card"],
     #     line_items=[
     #         {

@@ -5,11 +5,11 @@
      <div class="gallery-image">
           <img id="responsive" src="{% static 'images/testmodel2.png' %}"  />
 
-          <div class="gallery-text">
+          <!-- <div class="gallery-text">
 
           <h3>MILLIYAR ORIGINALS</h3>
 
-          </div>    
+          </div>     -->
      </div>
 </div>
 
@@ -26,23 +26,13 @@
      <div class="row">
           {% for product in products %}
           <div class="col-lg-4">
-               <!-- NEED SLIDER FOR EXTRA PICS -->
-               <img id="pic-thumbnail" class="thumbnail" id="pic" src="{{product.imageURL}}" alt="">
+               <a href="product/{{product.id}}">
+               <img id="pic-thumbnail" class="thumbnail1" id="pic" src="{{product.imageURL}}" alt="">
+               </a>
                <div class="z-depth-5">
                <div class="box-element product">
-                    <h6 id="responive" ALIGN="CENTER"><strong>{{product.name}}</strong></h6>
+                   <a href="product/{{product.id}}"><h6 id="responive" ALIGN="CENTER"><strong>{{product.name}}</strong></h6> </a> 
                     <hr>
-
-                    <!-- Color changer expectation -->
-                    <!-- <div  id="slide-wrapper">
-                         <div id="product-slider">
-     
-                              <img class="slider-pic active s" width ="40px"  src="{% static 'images/SPACEBLACK.png' %}">
-                              <img  class="slider-pics" width ="40px"src="{% static 'images/SPACEPINK.png' %}">
-                              <img class="slider-pics" width ="40px" src="{% static 'images/SPACEYELLOW.png' %}">
-                         </div>
-                         <button id="myBtn">Click Me</button>
-                    </div> -->
                    
                     <button id="responsive" data-product={{product.id}} data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
                     <h4 ALIGN="CENTER" style="display: inline-block,">${{product.price | floatformat:2}}</h4>
@@ -59,9 +49,6 @@
      <h4>..</h4>
 </div>
 
-
-<!-- Color changer script -->
-<
 
 
 <!-- Loader -->

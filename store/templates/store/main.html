@@ -107,9 +107,21 @@
       </nav>
       <div class="row">
         <div class="col text-center">
-          <a class="btn-floating btn-large black pulse" href="{% url 'home' %}"><i class="large material-icons">home</i></a>
-          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/shopbutton.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
-          <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}"><i class="material-icons">shopping_cart</i></a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'home' %}"><i class="large material-icons">home</i>
+          <!-- <p>
+            Home
+          </p> -->
+        </a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}"><i class="material-icons"><img src="{% static 'images/shopbutton.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i>
+            <!-- <p>
+              Shop
+            </p> -->
+          </a>
+          <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}"><i class="material-icons">shopping_cart</i>
+            <!-- <p>
+              Cart
+            </p> -->
+          </a>
         </div>
       </div>
 

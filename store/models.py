@@ -9,7 +9,9 @@ class Customer(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=200, null=True)
-
+    
+    
+    
     def __str__(self):
         return self.name
 
@@ -19,7 +21,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-
+    
     def __str__(self):
         return self.name
 
@@ -31,17 +33,14 @@ class Product(models.Model):
             url = ''
         return url
 
-# class ProductColor(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE,)
-#     color = models.CharField(max_length=120)
-#     active = models.BooleanField(default=True)
+class ProductImages(models.Model):
 
-#     def __str__(self):
-#         return self.color
-
-#     def get_absolute_url(self):
-#          return self.product.get_absolute_url()
-     
+    image = models.ImageField(null=True, blank=True)
+    product=models.ForeignKey(
+        Product, on_delete=models.CASCADE, null = True, blank= True
+    )
+    
+   
 class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, null=True, blank=True)
@@ -120,3 +119,4 @@ class ShippingAddress(models.Model):
 
 #     context = {'items': items, 'order': order, 'cartItems': cartItems}
 #     return render(request, 'store/checkout.html', context)
+# 
