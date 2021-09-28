@@ -1,5 +1,7 @@
-<!-- Greetings {{name}}
-
-Thank you for shopping with Milliyar, your order has been recieved!
-
-We will send another email shortly with tracking information, meanwhile visit us on our social media to get more information about our next drop! -->
+{% extends 'store/base_email.html' %} {% block email_title_block %} {{% endblock
+%}} {% block email_content%}Greetings {{name}} <br />Thank you for shopping with
+Milliyar, your order has been recieved! We will send another email shortly with
+tracking information, meanwhile visit us on our social media to get more
+information about our next drop! {% endblock %} {% block target_url%}
+<a href="{{verifcation_link}}"> {{verifcation_link}} </a>
+{{% endblock %}}

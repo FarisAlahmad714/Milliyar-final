@@ -385,15 +385,31 @@ font-size: 14px;
   padding: 10px;
 
 }
-
-#featured{
-  max-width: 500px;
-  max-height: 600px;
-  object-fit: cover;
-  cursor: pointer;
-  /* border: 2px solid black; */
-
-}
+  .frame {
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  }
+  #featured {
+    /* max-width: 500px;
+    max-height: 600px; */
+    height: 200px;
+    width: 200px;
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -ms-transition: all 2s ease;
+    transition: all 2s ease;
+    
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    /* border: 2px solid black; */
+  }
+  #featured:hover {
+    width: 500px !important;
+    height: 400px !important;
+  }
+  
 
 .thumbnail{
   object-fit: cover;

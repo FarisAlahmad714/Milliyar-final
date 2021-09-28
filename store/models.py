@@ -92,8 +92,8 @@ class ShippingAddress(models.Model):
         Customer, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     # Worry about rendering product.name
-    product = models.ForeignKey(
-        Product, on_delete=models.SET_NULL, null=True)
+    product = models.ManyToManyField(Product)
+    email = models.CharField(max_length=200,null=False)
     address = models.CharField(max_length=200, null=False)
     city = models.CharField(max_length=200, null=False)
     state = models.CharField(max_length=200, null=False)

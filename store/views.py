@@ -5,6 +5,11 @@ from django.http import JsonResponse
 import json
 import datetime
 from . utils import cookieCart, cartData, guestOrder
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
+
 # from django.core.mail import send_mail
 # from django.conf import settings
 
@@ -45,8 +50,11 @@ def cart(request):
     return render(request, 'store/cart.html', context)
 
 def productdetails(request,id):
+    data = cartData(request)
+    cartItems = data['cartItems']
     product = Product.objects.get(id=id)
-    return render(request,'store/productId.html',{'product':product})
+    return render(request,'store/productId.html',{'product':product,'cartItems': cartItems
+})
 
 # def email(request):
     
@@ -139,29 +147,45 @@ def processOrder(request):
     order.save()
 
     if order.shipping == True:
-        ShippingAddress.objects.create(
+        shipping = ShippingAddress.objects.create(
             customer=customer,
             order=order,
             address=data['shipping']['address'],
             city=data['shipping']['city'],
             state=data['shipping']['state'],
             zipcode=data['shipping']['zipcode'],
+            email=data["shipping"]["email"]
 
         )
         
-    #EMAIL ATTEMPT 
-    # if order.shipping == True:
-    #     template = render_to_string('store/tyemail.html' , {'name': request.user.first_name})
-        
-    #     email = EmailMessage (
-    #         'subject'
-    #         'body',
-    #         settings.EMAIL_HOST_USER,
-    #         [request.user.email]
-    #         )
-        
-    #     email.fail_silently=False
-    #     email.send()
     
-       
+        product = Product.objects.filter(pk__in=data['product'])
+        shipping.product.set(product)
+        name= data["form"]["name"]
+
+        email_verification(name,data ["shipping"]["email"], data["shipping"]["address"])
+
     return JsonResponse('Payment Completed', safe=False)
+
+def email_verification(name,email1, address):
+    subject = "Milliyar"
+    message = render_to_string(
+        "store/tyemail.html",
+        {
+            "name":name,
+            "email":email1,
+            "address":address,
+            
+        },
+    )
+    text_context = strip_tags(message)
+
+    email = EmailMultiAlternatives(
+        subject,
+        text_context,
+        settings.EMAIL_HOST_USER,
+        [email1]
+    )
+    email.attach_alternative(message, "text/html")
+    email.send()
+    print("Email succesfully sent ")

@@ -1,82 +1,80 @@
-{% extends 'store/main.html' %}
-{% load static %}
-{% block content %}
+{% extends 'store/main.html' %} {% load static %} {% block content %}
 
+<div id="content-wrapper">
+  <div class="column">
+    <div class="frame">
+      <img id="featured" src="{{product.image.url}}" />
+    </div>
+    <div id="slide-wrapper2">
+      <!-- <img id="slideLeft" class="arrow" src="{% static 'images/arrow-left2.png'%}"> -->
 
+      <div id="slider2">
+        {% for ProductImages in product.productimages_set.all %}
+        <img class="thumbnail" src="{{ProductImages.image.url}}" />
+        {% endfor %}
+      </div>
 
+      <!-- <img id="slideRight" class="arrow" src="{% static 'images/arrow-right2.png'%}"> -->
+    </div>
+  </div>
 
-        <div id="content-wrapper">
-		
+  <div class="z-depth-5">
+    <div class="box-element product">
+      <div class="column">
+        <h1>{{product.name}}</h1>
+        <button
+          id="responsive"
+          data-product="{{product.id}}"
+          data-action="add"
+          class="btn btn-outline-dark add-btn update-cart"
+        >
+          Add to Cart
+        </button>
+        <hr />
 
-            <div class="column">
-                <img id=featured src="{{product.image.url}}">
+        <h3>${{product.price | floatformat:2}}</h3>
 
-                <div id="slide-wrapper2" >
-                    <!-- <img id="slideLeft" class="arrow" src="{% static 'images/arrow-left2.png'%}"> -->
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+        <hr />
+      </div>
+    </div>
+  </div>
+  <hr />
 
-                    <div id="slider2">
-                        {% for ProductImages in product.productimages_set.all %}
-                        <img class="thumbnail "  src="{{ProductImages.image.url}}"> 
-                        {% endfor %}
-                    </div>
+  <script type="text/javascript">
+    let thumbnails = document.getElementsByClassName("thumbnail");
 
-                    <!-- <img id="slideRight" class="arrow" src="{% static 'images/arrow-right2.png'%}"> -->
-                </div>
-            </div>
+    let activeImages = document.getElementsByClassName("active");
 
-            <div class="z-depth-5">
-                <div class="box-element product">
-                    <div class="column">
-                    <h1>{{product.name}}</h1>
-                    <button id="responsive" data-product={{product.id}} data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
-                    <hr>
-                    
-                    <h3>${{product.price | floatformat:2}}</h3>
+    for (var i = 0; i < thumbnails.length; i++) {
+      thumbnails[i].addEventListener("mouseover", function () {
+        console.log(activeImages);
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <hr>
-                
-                </div>
-            </div>
-            
-        </div>
-    <hr>
-    
-    
-    <script type="text/javascript">
-        let thumbnails = document.getElementsByClassName('thumbnail')
-    
-        let activeImages = document.getElementsByClassName('active')
-    
-        for (var i=0; i < thumbnails.length; i++){
-    
-            thumbnails[i].addEventListener('mouseover', function(){
-                console.log(activeImages)
-                    
-                if (activeImages.length > 0){
-                    activeImages[0].classList.remove('active')
-                }
-                    
-    
-                this.classList.add('active')
-                document.getElementById('featured').src = this.src
-            })
+        if (activeImages.length > 0) {
+          activeImages[0].classList.remove("active");
         }
-    
-    
-        let buttonRight = document.getElementById('slideRight');
-        let buttonLeft = document.getElementById('slideLeft');
-    
-        buttonLeft.addEventListener('click', function(){
-            document.getElementById('slider').scrollLeft -= 180
-        })
-    
-        buttonRight.addEventListener('click', function(){
-            document.getElementById('slider').scrollLeft += 180
-        })
-    
-    
-    </script>
-    
-{% endblock content %}
 
+        this.classList.add("active");
+        document.getElementById("featured").src = this.src;
+      });
+    }
+
+    let buttonRight = document.getElementById("slideRight");
+    let buttonLeft = document.getElementById("slideLeft");
+
+    buttonLeft.addEventListener("click", function () {
+      document.getElementById("slider").scrollLeft -= 180;
+    });
+
+    buttonRight.addEventListener("click", function () {
+      document.getElementById("slider").scrollLeft += 180;
+    });
+  </script>
+
+  {% endblock content %}
+</div>

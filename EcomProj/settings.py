@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+import environ
 import os
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -155,9 +158,17 @@ STRIPE_PRIVATE_KEY='sk_test_51ICUkfBBFg9oIquvx67waMkosBs4BT9985EinKKSYh3bV6PlcMn
 # EMAIL_BACKEND ='django.core.mail.backends.setup.EmailBackend'
 
 #EMAIL CONFIG2
-# EMAIL_BACKEND ='django.core.mail.backends.setup.EmailBackend'
+# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST='farisalahmad714@gmail.com'
 # EMAIL_PORT= 587
 # EMAIL_USE_TLS= True 
 # EMAIL_HOST_USER='support@milliyar.com'
 # EMAIL_HOST_PASSWORD='Support714'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER='farisalahmad714@gmail.com'
+EMAIL_HOST_PASSWORD='xgjchmzzznuxqvpe' 
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# env=("PASSWORD")
