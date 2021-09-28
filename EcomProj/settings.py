@@ -17,6 +17,7 @@ env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -143,9 +144,9 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'store/static/images')
 
-STRIPE_PUBLIC_KEY = 'pk_test_51ICUkfBBFg9oIquvEDXfjORvgkYwcCH1z63Ie1Mi2qEMjfzJmbebTHGDyxChCLbfdSUxwzdzxUydqnvsxjhX1OJc00EqcUa6lI'
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 
-STRIPE_PRIVATE_KEY='sk_test_51ICUkfBBFg9oIquvx67waMkosBs4BT9985EinKKSYh3bV6PlcMniPgm9hmLwCeENmkXtsurb0xHAu4CTiTsMsvBF002g2lF0Es'
+STRIPE_PRIVATE_KEY= env('STRIPE_PRIVATE_KEY')
 
 
 #EMAIL CONFIG
@@ -167,8 +168,8 @@ STRIPE_PRIVATE_KEY='sk_test_51ICUkfBBFg9oIquvx67waMkosBs4BT9985EinKKSYh3bV6PlcMn
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER='farisalahmad714@gmail.com'
-EMAIL_HOST_PASSWORD='xgjchmzzznuxqvpe' 
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # env=("PASSWORD")
