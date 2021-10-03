@@ -1,17 +1,16 @@
-
-{% extends 'store/base_email.html' %}
-
+{% extends 'store/base_email.html' %} 
 {% block email_title_block %}
 {% endblock %}
+ {% block email_content %} Greetings {{name}} <br />
 
-{% block email_content %}
-Greetings {{name}} <br/>
+Thank you for shopping with Milliyar, your order has been recieved! <br />
 
-Thank you for shopping with Milliyar, your order has been recieved! <br/>
-
-We will send another email shortly with tracking information, meanwhile visit us on our social media to get more information about our next drop!
+Here is what you have ordered {{product_list}}. <br />
+{% for item in product_list %} 
+product name {{item.name}} <br />
+{{product.img}} {{product.price}} {{product.quantity}}
+ {% endfor %}
+<br />
+We will send another email shortly with tracking information, meanwhile visit us
+on our social media to get more information about our next drop! 
 {% endblock %}
-{% block target_url %}
-
-<a href="{{verification_link}}"> {{verification_link}} </a>
-{% endblock target_url %}

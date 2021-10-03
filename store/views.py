@@ -17,6 +17,8 @@ from django.utils.html import strip_tags
 
 # price_1ICV7qBBFg9oIquvaWQhDmqP
 
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
 
 def home(request):
     # return HttpResponse(" YO")
@@ -92,6 +94,9 @@ def checkout(request):
     cartItems = data['cartItems']
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
+    # print(context)
+    # print(order)
+    
     return render(request, 'store/checkout.html', context)
 
 
@@ -127,6 +132,22 @@ from django.template.loader import render_to_string
 
 # @csrf_exempt
 def processOrder(request):
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    order_cart_items = order.get_cart_items
+    cart_total = order.get_cart_total
+    products_list = []
+    for item in items:
+        product_dict = {}
+        product_dict["img"] = item.product.imageURL
+        product_dict["name"] = item.product.name
+        product_dict["price"] = item.product.price
+        product_dict["quantity"] = item.quantity
+        products_list.append(product_dict)
+        
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
     print('Data:', request.body)
@@ -163,11 +184,11 @@ def processOrder(request):
         shipping.product.set(product)
         name= data["form"]["name"]
 
-        email_verification(name,data ["shipping"]["email"], data["shipping"]["address"])
+        email_verification(name,data ["shipping"]["email"], data["shipping"]["address"],order_cart_items,cart_total,products_list)
 
     return JsonResponse('Payment Completed', safe=False)
 
-def email_verification(name,email1, address):
+def email_verification(name,email1, address,cart_items,cart_total,products_list):
     subject = "Milliyar"
     message = render_to_string(
         "store/tyemail.html",
@@ -175,6 +196,9 @@ def email_verification(name,email1, address):
             "name":name,
             "email":email1,
             "address":address,
+            "cart_items":cart_items,
+            "cart_total": cart_total,
+            "product_list":products_list,
             
         },
     )
