@@ -5,10 +5,10 @@
 
 Thank you for shopping with Milliyar, your order has been recieved! <br />
 
-Here is what you have ordered {{product_list}}. <br />
+Here is what you have ordered <br />
 {% for item in product_list %} 
 product name {{item.name}} <br />
-{{product.img}} {{product.price}} {{product.quantity}}
+{{item.img}} {{item.price}} {{item.quantity}}
  {% endfor %}
 <br />
 We will send another email shortly with tracking information, meanwhile visit us

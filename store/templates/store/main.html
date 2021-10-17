@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="{% static 'images/white.ico' type='image/x-icon' %}">
      <!-- Compiled and minified CSS -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -76,6 +76,7 @@
       }
       console.log('Cart:', cart)
 
+
     </script>
    <!-- MAGNIFIER.JS -->
    <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
@@ -88,19 +89,30 @@
             <span class="navbar-toggler-icon"> <a href="{% url 'cart' %}">
               <i class="material-icons">shopping_cart</i><p id="cart-total" style="height: 50px;"></p>{{cartItems}}</p>
                </a>
+          
+
         </button>
   
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+          
           </ul>
+     <i class="fa fa-facebook-square d-flex align-items-center mr-2" aria-hidden="true"></i>
+     <i class="fa fa-instagram d-flex align-items-center mr-2" aria-hidden="true"></i>
+     <i class="fa fa-twitter d-flex align-items-center mr-2" aria-hidden="true"></i>
+
+
+
           <div class="form-inline my-2 my-lg-0">
                 <!-- <a href="#"class="btn btn-warning">Login</a> -->
             
                 <a href="{% url 'cart' %}">
-                  <i class="material-icons">shopping_cart</i>
+                  <i class="material-icons">shopping_cart</i> 
                    </a>
-                  <p id="cart-total" style="height: 80px;">{{cartItems}}</p>
-   
+                <p id="cart-total1" style="height: 80px;">
+                  {{cartItems}}
+                  </p> 
+              
                </div>
          
         </div>
