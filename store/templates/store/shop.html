@@ -33,8 +33,14 @@
                <div class="box-element product">
                    <a href="product/{{product.id}}"><h6 id="responive" ALIGN="CENTER"><strong>{{product.name}}</strong></h6> </a> 
                     <hr>
-                   
-                    <button id="responsive" data-name="{{product.name}}" data-product={{product.id}}  data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
+                    {% if product.in_stock <= 0 %}
+                    <p>Sold out </p>
+                    <button disabled id="responsive" data-name="{{product.name}}" data-product={{product.id}}  data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
+                    {% else %}
+                    <p >quantity  <span id="pstock">{{product.in_stock}} </span></p>
+                    <button id="responsive" data-stock={{product.in_stock}} data-name="{{product.name}}" data-product={{product.id}}  data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
+                    
+                    {% endif %}
                     <h4 ALIGN="CENTER" style="display: inline-block,">${{product.price | floatformat:2}}</h4>
                </div>
           </div>
@@ -56,7 +62,7 @@
 <script>
           window.addEventListener("load", function () {
                const loader = document.querySelector(".loader");
-               loader.className += " hidden"
+               loader.class += " hidden"
           })
           $(window).on("load", function () {
                $(".loader-wrapper").fadeOut("slow");

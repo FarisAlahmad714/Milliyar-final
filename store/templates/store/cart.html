@@ -42,10 +42,11 @@
         <div style="flex: 2"><strong>Item</strong></div>
         <div style="flex: 1"><strong>Price</strong></div>
         <div style="flex: 1"><strong>Quantity</strong></div>
-        <div style="flex: 1"><strong>Total</strong></div>
+        <div style="flex: 1"><strong>Total </strong></div>
       </div>
 
       {% for item in items %}
+    
       <div class="cart-row">
         <div style="flex: 2">
           <img class="row-image" src="{{ item.product.imageURL}}" />
@@ -64,15 +65,21 @@
           <div class="quantity">
             <img
               data-product="{{item.product.id}}"
+              data-stock="{{item.in_stock}}"
               data-price="{{item.product.price}}"
               data-action="addcart"
-              class="chg-quantity update-cart"
+              data-name="{{item.product.name}}"
               src="{% static  'images/upbtn.png' %}"
+              class="chg-quantity update-cart"
+
             />
 
             <img
               data-product="{{item.product.id}}"
               data-price="{{item.product.price}}"
+              data-stock ="{{item.in_stock}}"
+              data-name="{{item.product.name}}"
+
               data-action="remove"
               class="chg-quantity update-cart"
               src="{% static  'images/downtbn.png' %}"
@@ -86,6 +93,8 @@
       {% endfor %}
     </div>
   </div>
+    <span style="visibility:hidden" id="time">{{timer.date}}</span>
+
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"

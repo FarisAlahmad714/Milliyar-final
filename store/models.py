@@ -1,17 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponse
+
 # Create your models here.
 
-    
+
 class Customer(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=200, null=True)
-    
-    
-    
+
     def __str__(self):
         return self.name
 
@@ -21,6 +19,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    in_stock = models.IntegerField()
     
     def __str__(self):
         return self.name
@@ -30,20 +29,22 @@ class Product(models.Model):
         try:
             url = self.image.url
         except:
-            url = ''
+            url = ""
         return url
+
 
 class ProductImages(models.Model):
 
     image = models.ImageField(null=True, blank=True)
-    product=models.ForeignKey(
-        Product, on_delete=models.CASCADE, null = True, blank= True
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, null=True, blank=True
     )
-    
-   
+
+
 class Order(models.Model):
     customer = models.ForeignKey(
-        Customer, on_delete=models.SET_NULL, null=True, blank=True)
+        Customer, on_delete=models.SET_NULL, null=True, blank=True
+    )
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
@@ -75,9 +76,9 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     product = models.ForeignKey(
-        Product, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(
-        Order, on_delete=models.SET_NULL, blank=True, null=True)
+        Product, on_delete=models.SET_NULL, blank=True, null=True
+    )
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -88,12 +89,11 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(
-        Customer, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    order = models.OneToOneField(Order, on_delete=models.SET_NULL, null=True)
     # Worry about rendering product.name
     product = models.ManyToManyField(Product)
-    email = models.CharField(max_length=200,null=False)
+    email = models.CharField(max_length=200, null=False)
     address = models.CharField(max_length=200, null=False)
     city = models.CharField(max_length=200, null=False)
     state = models.CharField(max_length=200, null=False)
@@ -101,7 +101,7 @@ class ShippingAddress(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return (self.address)
+        return self.address
 
 
 # def checkout(request):
@@ -119,4 +119,7 @@ class ShippingAddress(models.Model):
 
 #     context = {'items': items, 'order': order, 'cartItems': cartItems}
 #     return render(request, 'store/checkout.html', context)
-# 
+#
+class Timer(models.Model):
+    date = models.CharField(max_length=100)
+    display = models.BooleanField(default=False)

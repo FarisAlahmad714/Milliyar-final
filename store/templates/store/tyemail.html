@@ -7,10 +7,19 @@ Thank you for shopping with Milliyar, your order has been recieved! <br />
 
 Here is what you have ordered <br />
 {% for item in product_list %} 
-product name {{item.name}} <br />
-{{item.img}} {{item.price}} {{item.quantity}}
+<div style="width: 100%; overflow: hidden;">
+    <div style="width: 600px; float: left;"> {{item.img}} </div>
+    <div style="margin-left: 620px;"> <div>
+        <span><b>Product</b>:{{item.name}}  </span>|<br>
+        <span><b>Price</b>:{{item.price}} $</span>|<br>
+        <span><b>Qty</b>:{{item.quantity}} </span> 
+    </div> </div>
+</div>
+ <br />
  {% endfor %}
+</div>
 <br />
 We will send another email shortly with tracking information, meanwhile visit us
 on our social media to get more information about our next drop! 
 {% endblock %}
+

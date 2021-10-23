@@ -22,8 +22,13 @@
     <div class="box-element product">
       <div class="column" id="responsive">
         <h1>{{product.name}}</h1>
+
+        {% if product.in_stock <= 0 %}
+        <p>Sold out</p>
         <button
+          disabled
           id="responsive"
+          data-stock="{{product.in_stock}}"
           data-product="{{product.id}}"
           data-action="add"
           data-name="{{product.name}}"
@@ -31,6 +36,20 @@
         >
           Add to Cart
         </button>
+        {% else %}
+        <p>quantity <span id="pstock">{{product.in_stock}} </span></p>
+        <button
+          id="responsive"
+          data-stock="{{product.in_stock}}"
+          data-product="{{product.id}}"
+          data-action="add"
+          data-name="{{product.name}}"
+          class="btn btn-outline-dark add-btn update-cart"
+        >
+          Add to Cart
+        </button>
+
+        {% endif %}
         <hr />
 
         <h3>${{product.price | floatformat:2}}</h3>
