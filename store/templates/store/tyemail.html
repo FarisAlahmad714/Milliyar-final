@@ -1,11 +1,14 @@
 {% extends 'store/base_email.html' %} 
 {% block email_title_block %}
 {% endblock %}
- {% block email_content %} Greetings {{name}} <br />
+ {% block email_content %}
+<h3>Greetings {{name}}</h3> <br />
 
 Thank you for shopping with Milliyar, your order has been recieved! <br />
 
 Here is what you have ordered <br />
+<hr>
+<div>
 {% for item in product_list %} 
 <div style="width: 100%; overflow: hidden;">
     <div style="width: 600px; float: left;"> {{item.img}} </div>
