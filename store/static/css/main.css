@@ -60,6 +60,7 @@ body {
 }
 
 
+
 .materialboxed {
   cursor: pointer;
 }
@@ -542,6 +543,20 @@ font-size: 14px;
 }
 
 /* shop image */
+.collection-text {
+  width: 100%;
+  height: auto;
+  cursor: default;
+  animation: mycollection 10s infinite;
+}
+  @keyframes mycollection {
+    0% {color: white;}
+    25%{color:#212121;}
+    50%{color:#212121;}
+    75%{color:white;}
+    100% {color: white;}
+    
+  }
 gallery {
   width: 300px;
   height: 200px;

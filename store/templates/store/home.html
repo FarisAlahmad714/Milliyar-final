@@ -279,6 +279,25 @@ ul li:hover:nth-child(4) a:before{
 ul li:hover:nth-child(4) a:after{
   background: #e46880;
 }
+.button-49,
+.button-49:after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  background: linear-gradient(45deg, transparent 5%, #BF2530 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 30px;
+  box-shadow: 6px 0px 0px #000000;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
     </style>
 </head>
 <body>
@@ -376,7 +395,8 @@ ul li:hover:nth-child(4) a:after{
         </div>
         <div id="arrow-right" class="arrow"></div>
       </div>
-   
+      <a href="{% url 'shop' %}"><button class="button-49" id="responsive" role="button" ALIGN=CENTER>SHOP</button></a>
+
      <!-- <hr>
      <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  frameborder="0" allowfullscreen></iframe>
      <hr> -->
