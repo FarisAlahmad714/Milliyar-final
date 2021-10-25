@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: /manage.py
     destination: /home/ubuntu/app
 
 hooks:
-  AfterInstall: 
+  BeforeInstall: 
     - location: scripts/install_dependencies
       timeout: 6000
       runas: ubuntu
