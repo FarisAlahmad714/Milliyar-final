@@ -1,11 +1,204 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
+    <style>
+      ul {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul li {
+        list-style: none;
+        margin: 0 5px;
+      }
+
+      ul li a .fa {
+        font-size: 17px;
+        color: #262626;
+        line-height: 25px;
+        transition: 0.5s;
+        padding-right: 10px;
+      }
+
+      ul li a span {
+        padding: 0;
+        margin: 0;
+
+        top: 30px;
+        color: #262626;
+        letter-spacing: 4px;
+        transition: 0.5s;
+      }
+
+      ul li a {
+        text-decoration: none;
+        display: absolute;
+        display: block;
+
+        height: 23px;
+        background: #fff;
+        text-align: left;
+        padding-left: 10px;
+        transform: rotate(-30deg) skew(25deg) translate(0, 0);
+        transition: 0.5s;
+        box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
+      }
+      ul li a:before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: -20px;
+        height: 100%;
+        width: 20px;
+        background: #b1b1b1;
+        transform: 0.5s;
+        transform: rotate(0deg) skewY(-45deg);
+      }
+      ul li a:after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: -10px;
+        height: 20px;
+        width: 100%;
+        background: #b1b1b1;
+        transform: 0.5s;
+        transform: rotate(0deg) skewX(-45deg);
+      }
+
+      ul li a:hover {
+        transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
+        box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      ul li:hover .fa {
+        color: #fff;
+      }
+
+      ul li:hover span {
+        color: #fff;
+      }
+
+      ul li:hover:nth-child(1) a {
+        background: #3b5998;
+      }
+      ul li:hover:nth-child(1) a:before {
+        background: #365492;
+      }
+      ul li:hover:nth-child(1) a:after {
+        background: #4a69ad;
+      }
+
+      ul li:hover:nth-child(2) a {
+        background: #00aced;
+      }
+      ul li:hover:nth-child(2) a:before {
+        background: #097aa5;
+      }
+      ul li:hover:nth-child(2) a:after {
+        background: #53b9e0;
+      }
+
+      ul li:hover:nth-child(3) a {
+        background: #dd4b39;
+      }
+      ul li:hover:nth-child(3) a:before {
+        background: #b33a2b;
+      }
+      ul li:hover:nth-child(3) a:after {
+        background: #e66a5a;
+      }
+
+      ul li:hover:nth-child(4) a {
+        background: #e4405f;
+      }
+      ul li:hover:nth-child(4) a:before {
+        background: #d81c3f;
+      }
+      ul li:hover:nth-child(4) a:after {
+        background: #e46880;
+      }
+    </style>
     <title>404 Error</title>
-</head>
-<body>
-    <h1>WHOOPS!</h1>
-    <h3>Wrong page, go <a  href="{% url 'home' %}">home</a> !</h3>
-</body>
+  </head>
+  <body>
+    <div class="bg-dark d-flex justify-content-between py-2 px-3">
+      <a class="px-3" href="{% url 'home' %}">
+        <img
+          class=""
+          width="150px"
+          style="margin-bottom: 7px"
+          src="{% static 'images/hflogo.png' %}"
+        />
+      </a>
+    </div>
+
+    <div class="text-center">
+      <h1>WHOOPS!</h1>
+      <h3>Wrong page, go <a href="{% url 'home' %}">home</a> !</h3>
+    </div>
+
+    <div id="footer">
+      <div>
+        <img
+          class=""
+          width="150px"
+          style="margin-bottom: 7px; padding: 5px"
+          src="{% static 'images/hflogo.png' %}"
+        />
+        Ltd.&copy;
+      </div>
+
+      <ul class="d-none d-md-flex" style="margin-right: -67px">
+        <li>
+          <a href="#">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+      <div class="position-absolute px-2 d-sm-none" style="right: 0">
+        <i class="fa fa-google-plus" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </div>
+    </div>
+  </body>
 </html>

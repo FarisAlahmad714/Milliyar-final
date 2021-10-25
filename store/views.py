@@ -121,6 +121,7 @@ def checkout(request):
         "order": order,
         "cartItems": cartItems,
         "timer": timer[0],
+        
     }
     # print(context)
     # print(order)
