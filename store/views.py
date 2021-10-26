@@ -75,7 +75,7 @@ def productdetails(request, id):
     product = Product.objects.get(id=id)
     return render(
         request,
-        "store/productId.html",
+        "store/productID.html",
         {"product": product, "cartItems": cartItems, "timer": timer[0]},
     )
 
@@ -121,7 +121,7 @@ def checkout(request):
         "order": order,
         "cartItems": cartItems,
         "timer": timer[0],
-        
+
     }
     # print(context)
     # print(order)
