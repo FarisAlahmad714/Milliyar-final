@@ -34,14 +34,16 @@ function addCookieItem(productId, action, productName, price, stock) {
   console.log("Not Logged In");
   if (action == "add") {
     if (cart[productId] == undefined) {
-      alert("Product is Successfully add1" + productName);
+      alert(`"${productName}" ` + " is Successfully added");
       cart[productId] = { quantity: 1 };
     } else {
       if (stock <= cart[productId].quantity) {
-        alert(`sorry we not much stock. you cant add more item`);
+        alert(
+          `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
+        );
       } else {
         cart[productId]["quantity"] += 1;
-        alert("Product is Successfully add1" + productName);
+        alert(`"${productName}" ` + " is Successfully added");
       }
     }
   }
@@ -124,7 +126,9 @@ function addCookieItem(productId, action, productName, price, stock) {
     } else {
       console.log(stock, "stk", cart[productId].quantity);
       if (Number(stock) <= cart[productId].quantity) {
-        alert(`sorry we not much stock. you cant add more item`);
+        alert(
+          `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
+        );
       } else {
         cart[productId]["quantity"] += 1;
         let cartitem = 0;
@@ -188,10 +192,12 @@ function updateUserOrder(productId, action, productName, stock) {
       // console.log("data:", data);
       if (action == "add" || action == "addcart") {
         if (stock <= data.quantity) {
-          alert(`sorry we not much stock. you cant add more item`);
+          alert(
+            `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
+          );
         } else {
           if (action == "add") {
-            alert("product is successfuly added" + productName);
+            alert(`"${productName}" ` + " is Successfully added");
           }
         }
       }
