@@ -1,5 +1,6 @@
 #!/bin/bash
 
-
-
+cd /home/ubuntu/app
+source env/bin/activate
+python manage.py collectstatic
 sudo supervisorctl restart all
