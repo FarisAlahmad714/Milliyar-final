@@ -37,7 +37,12 @@ def main(request):
 
 
 def about(request):
-    return render(request, "store/about.html")
+    timer = Timer.objects.all()
+    context = {"timer": timer[0]}
+    return render(request, "store/about.html",context)
+
+# def index(request):
+#     return render(request, "store/index.html")
 
 def shop(request):
 

@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     {% load static %}
     <link rel="shortcut icon" href="{% static 'images/white.ico' type='image/x-icon' %}">
+    <!-- BTN INTERACTIVE  -->
+    <link rel="stylesheet" href="https://use.typekit.net/rnz2bks.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"> 
      <!-- Compiled and minified CSS -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
+<!-- BUTTON CSS -->
+<link rel="stylesheet" href="https://use.typekit.net/rnz2bks.css">
+<link rel="stylesheet" type="text/css" href="css/base.css" />
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -334,7 +340,7 @@ ul li:hover:nth-child(4) a:after{
           <a class="btn-floating btn-large black pulse" href="{% url 'home' %}">
             <i class="large material-icons">home</i>
           </a>
-          <a class="btn-floating btn-large black pulse" href="{% url 'shop' %}">
+          <a class="btn-floating btn-large black pulse" href="{% url 'about' %}">
             <i class="material-icons"><img src="{% static 'images/shopbutton.png' %}" alt="" width="25px" height="25px" style="margin-bottom: 7px;"></i></a>
           <a class="btn-floating btn-large black pulse" href="{% url 'cart' %}">
             <i class="material-icons">shopping_cart</i></a>
@@ -395,7 +401,20 @@ ul li:hover:nth-child(4) a:after{
         </div>
         <div id="arrow-right" class="arrow"></div>
       </div>
-      <a href="{% url 'shop' %}"><button class="button-49" id="responsive" role="button" ALIGN=CENTER>SHOP</button></a>
+      <li class="content__item">
+        <a href="{% url 'shop' %}"><button class="button button--atlas">
+            <span>Shop Now</span>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__inner">
+                    <span>Shop Now</span>
+                    <span>Shop Now</span>
+                    <span>Shop Now</span>
+                    <span>Shop Now</span>
+                </div>
+            </div>
+        </button>
+      </a>
+    </li>
 
      <!-- <hr>
      <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  frameborder="0" allowfullscreen></iframe>
@@ -419,17 +438,19 @@ ul li:hover:nth-child(4) a:after{
         </p>
       </div>
     </div> -->
-    <div class="z-depth-5" id="responsive">
-      <div class="container-box">
-        <div class="normal-div" id="div-1">
-          <a class="expansion-btn exp-1"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
-          </div>
-        <div class="normal-div" id="div-2">
-          <a class="expansion-btn exp-2"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
-          </div>
-        <div class="normal-div" id="div-3">
-          <a class="expansion-btn exp-3"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
-          </div>
+    <div>
+      <div class="z-depth-5" id="responsive">
+        <div class="container-box">
+          <div class="normal-div" id="div-1">
+            <a class="expansion-btn exp-1"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+            </div>
+          <div class="normal-div" id="div-2">
+            <a class="expansion-btn exp-2"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+            </div>
+          <div class="normal-div" id="div-3">
+            <a class="expansion-btn exp-3"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+            </div>
+        </div>
       </div>
     </div>
     <!-- VideoComment -->
@@ -575,20 +596,20 @@ ul li:hover:nth-child(4) a:after{
       </div>
 
 
-
-
+<!-- BUTTON SCRIPT -->
+<script src="https://tympanus.net/codrops/adpacks/cda.js"></script>
 
 <script>
-document.querySelector("a.expansion-btn").click(function (){
+  $("a.expansion-btn").click(function (){
     classes = this.className;
     var divNumber = classes.slice(-1);
     var toGetId = "#div-"+divNumber;
-    if (document.querySelector(toGetId).hasClass("expanded-div")){
-      document.querySelector(".normal-div").removeClass("compressed-div expanded-div");
+    if ($(toGetId).hasClass("expanded-div")){
+     $(".normal-div").removeClass("compressed-div expanded-div");
     }
     else{
-      document.querySelector(".normal-div").removeClass("compressed-div expanded-div").addClass("compressed-div");;
-      document.querySelector(toGetId).removeClass("compressed-div").addClass("expanded-div");    
+     $(".normal-div").removeClass("compressed-div expanded-div").addClass("compressed-div");;
+     $(toGetId).removeClass("compressed-div").addClass("expanded-div");    
     }  
   });
 </script>
