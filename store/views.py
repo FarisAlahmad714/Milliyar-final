@@ -36,8 +36,8 @@ def main(request):
     return render(request, "store/main.html", context)
 
 
-# def product.id(request):
-
+def about(request):
+    return render(request, "store/about.html")
 
 def shop(request):
 

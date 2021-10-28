@@ -400,7 +400,7 @@ ul li:hover:nth-child(4) a:after{
      <!-- <hr>
      <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  frameborder="0" allowfullscreen></iframe>
      <hr> -->
-    <!-- WHO WE ARE -->
+    <!-- WHO WE ARE
     <div class="split">
       <div class="split__left-right split__left-right--finn" id="two"  class="container">
         <img class="split__left-right__avatar avatar--finn"  class="column" class="image"src="{% static 'images/11.jpg' %}" alt="Finn the Human" id="responsive"/>
@@ -418,8 +418,20 @@ ul li:hover:nth-child(4) a:after{
           <p class="whoweareintro" ALIGN=RIGHT> A voice for street wear & gear, we offer an array of creative premium clothing wear for different generations of creatives & formed by love for hip-hop , art , skate , cultural fashion ,Milliyar pursues to spread from the Los Angeles community into a global prodigy .</p>
         </p>
       </div>
+    </div> -->
+    <div class="z-depth-5" id="responsive">
+      <div class="container-box">
+        <div class="normal-div" id="div-1">
+          <a class="expansion-btn exp-1"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+          </div>
+        <div class="normal-div" id="div-2">
+          <a class="expansion-btn exp-2"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+          </div>
+        <div class="normal-div" id="div-3">
+          <a class="expansion-btn exp-3"><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+          </div>
+      </div>
     </div>
-
     <!-- VideoComment -->
     {% comment %} <iframe id="responsive"src="https://www.youtube.com/embed/dvPfmcGtmrI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  {% endcomment %}
     <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  width="100%"frameborder="0" allowfullscreen></iframe>
@@ -534,17 +546,16 @@ ul li:hover:nth-child(4) a:after{
       
           <ul class="d-none d-md-flex" style="margin-right:-67px;">
   <li class="mr-2">
+    <a href="https://www.instagram.com/milliyarltd/">
+      <i class="fa fa-instagram" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li class="mr-2">
     <a href="https://www.facebook.com/milliyarltd">
       <i class="fa fa-facebook" aria-hidden="true"></i>
     </a>
   </li>
-   <li class="mr-2">
-
-    <a href="https://www.instagram.com/milliyarltd/">
-      <i class="fa fa-instagram" aria-hidden="true"></i>
-    
-    </a>
-  </li>
+  
   <li  class="mr-2">
     <a href="#">
       <i class="fa fa-twitter" aria-hidden="true"></i>
@@ -555,9 +566,10 @@ ul li:hover:nth-child(4) a:after{
 </ul>
   
 <div class="position-absolute px-2 d-sm-none" style="right:0;">
-  <i class="fa fa-google-plus" aria-hidden="true"></i>
-  <i class="fa fa-instagram" aria-hidden="true"></i>
-  <i class="fa fa-facebook" aria-hidden="true"></i>
+  <a href="https://www.instagram.com/milliyarltd/"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/milliyarltd"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+  
+  <i class="fa fa-twitter" aria-hidden="true"></i>
 </div>
       
       </div>
@@ -566,6 +578,20 @@ ul li:hover:nth-child(4) a:after{
 
 
 
+<script>
+document.querySelector("a.expansion-btn").click(function (){
+    classes = this.className;
+    var divNumber = classes.slice(-1);
+    var toGetId = "#div-"+divNumber;
+    if (document.querySelector(toGetId).hasClass("expanded-div")){
+      document.querySelector(".normal-div").removeClass("compressed-div expanded-div");
+    }
+    else{
+      document.querySelector(".normal-div").removeClass("compressed-div expanded-div").addClass("compressed-div");;
+      document.querySelector(toGetId).removeClass("compressed-div").addClass("expanded-div");    
+    }  
+  });
+</script>
 
 
 
