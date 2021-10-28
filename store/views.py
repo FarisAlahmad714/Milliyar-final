@@ -236,11 +236,16 @@ def processOrder(request):
 
         shipping.product.set(product)
         name = data["form"]["name"]
+        address = data["shipping"]["address"]
+        city = data["shipping"]["city"]
+        state=data["shipping"]["state"]
 
         email_verification(
             name,
             data["shipping"]["email"],
-            data["shipping"]["address"],
+            address,
+            city,
+            state,
             order_cart_items,
             cart_total,
             products_list,
@@ -249,7 +254,7 @@ def processOrder(request):
     return JsonResponse("Payment Completed", safe=False)
 
 
-def email_verification(name, email1, address, cart_items, cart_total, products_list):
+def email_verification(name, email1, address, city,state,cart_items, cart_total, products_list):
     subject = "Milliyar"
     message = render_to_string(
         "store/tyemail.html",
@@ -257,6 +262,8 @@ def email_verification(name, email1, address, cart_items, cart_total, products_l
             "name": name,
             "email": email1,
             "address": address,
+            "city":city,
+            "state":state,
             "cart_items": cart_items,
             "cart_total": cart_total,
             "product_list": products_list,
