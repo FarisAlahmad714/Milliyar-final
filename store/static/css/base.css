@@ -175,13 +175,6 @@ a:focus-visible {
     pointer-events: none;
 }
 
-.content__item::before {
-    color: var(--color-number);
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: counters(itemcounter, ".", decimal-leading-zero);
-}
 
 .button {
     pointer-events: auto;
