@@ -308,6 +308,7 @@ a:focus-visible {
 .button--atlas {
     font-family: signo, sans-serif;
     font-weight: 500;
+    background-color: #FFFFFF;
 }
 
 .button--atlas > span {
