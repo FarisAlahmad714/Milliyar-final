@@ -448,7 +448,7 @@ font-size: 14px;
   margin:0;
   padding:0;
   width:100%;
-  height:400px;
+ 
 }
 .normal-div{
   width:33.33%;
@@ -463,7 +463,6 @@ font-size: 14px;
 .expanded-div{
     width:50%;
     height: 550px;
-    background-color: #FFFEFF;
 }
 .compressed-div{
   width:25%;

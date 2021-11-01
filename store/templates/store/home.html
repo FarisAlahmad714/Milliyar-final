@@ -443,7 +443,7 @@ ul li:hover:nth-child(4) a:after{
       <div  id="responsive">
         <div class="container-box">
           <div class="normal-div" id="div-1">
-            <a class="expansion-btn exp-1 " ><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
+            <a class="expansion-btn exp-1" ><img src="{% static 'images/expand.png' %}"   width="25px" style="background-color: #BF2530;" alt=""></a>
 
             <div class="collection-text" id="responsive">
               <p ALIGN=LEFT>
@@ -483,7 +483,7 @@ ul li:hover:nth-child(4) a:after{
     </div>
     <hr>
     <!-- VideoComment -->
-    <div class="collection-text">
+    <div class="collection-text d-inline-block">
       <h2 class="text-center mt-5" >  UNITED DELEGATION OF MILLIYAR  </h2>
 
     <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  width="100%"frameborder="0" allowfullscreen></iframe>
@@ -634,12 +634,14 @@ ul li:hover:nth-child(4) a:after{
   $("a.expansion-btn").click(function (){
     classes = this.className;
     var divNumber = classes.slice(-1);
+    
     var toGetId = "#div-"+divNumber;
     if ($(toGetId).hasClass("expanded-div")){
      $(".normal-div").removeClass("compressed-div expanded-div");
     }
     else{
-     $(".normal-div").removeClass("compressed-div expanded-div").addClass("compressed-div");;
+    
+     $(".normal-div").removeClass("compressed-div expanded-div").addClass("compressed-div");
      $(toGetId).removeClass("compressed-div").addClass("expanded-div");    
     }  
   });
