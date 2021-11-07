@@ -3,5 +3,4 @@
 cd /home/ubuntu/app
 source env/bin/activate
 python manage.py collectstatic --noinput
-
 sudo supervisorctl restart all

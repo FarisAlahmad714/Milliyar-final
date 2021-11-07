@@ -25,6 +25,7 @@ function animateClock(span) {
 }
 
 function startTimer(id, deadline) {
+
   var timerInterval = setInterval(function () {
     var clock = document.getElementById(id);
     var timer = updateTimer(deadline);
@@ -61,7 +62,7 @@ function startTimer(id, deadline) {
 }
 
 window.onload = function () {
-  let backendDate = document.getElementById("time").innerHTML
+  let backendDate = document.getElementById("time").innerHTML;
   var deadline = new Date(backendDate); // deadline - end time of countdown
   var time = deadline - new Date();
   let days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -69,7 +70,6 @@ window.onload = function () {
   let minutes = Math.floor((time / 1000 / 60) % 60);
   let seconds = Math.floor((time / 1000) % 60);
   let total = time;
-
 
   if (hours <= 0 && days <= 0 && minutes <= 0 && seconds <= 0) {
     document.getElementById("geeks-countdown").style.display = "none";

@@ -79,15 +79,14 @@
 
     </script>
    <!-- MAGNIFIER.JS -->
-   <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
-   <script src="http://thecodeplayer.com/uploads/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+   <script src="https://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
+   <script src="https://thecodeplayer.com/uploads/js/jquery-1.7.1.min.js" type="text/javascript"></script>
 
 <style>
 #main_content{
   opacity:1;
 }
 #geeks-countdown{
-  width: 850px;
   margin: 10% auto;
 }
 #clock span{
@@ -102,6 +101,12 @@
   box-sizing: border-box;
 animation: animationtimer 10s infinite;
 
+}
+@media screen and (max-width: 600px) {
+ #clock span{
+  margin: 0 1.9%;
+   
+ }
 }
 #clock:after{
   content: "";
@@ -287,6 +292,8 @@ ul li:hover:nth-child(4) a:after{
                </a>
 </div> 
 
+
+
 <div id="maincontainer">
 
 
@@ -321,7 +328,11 @@ ul li:hover:nth-child(4) a:after{
 
     </div>
   </div>
-   </div>
+</div>
+
+     
+ 
+     
     <div class="loader">
       <h4>..</h4>
       <img src="{% static 'images/milliyarloader.gif' %}"alt="loading"/>
@@ -329,19 +340,9 @@ ul li:hover:nth-child(4) a:after{
     </div>
 
  <!-- CLOCK!! -->
-<div id="geeks-countdown">
-      <h1 class="text-center timerclock">MILLIYAR COUNTDOWN</h1>
-      <div id="clock"></div>
-      <div id="units">
-        <span>Days</span>
-        <span>Hours</span>
-        <span>Minutes</span>
-        <span>Seconds</span>
-      </div>
-    </div>
-   
 
-      <div>
+
+      
     <div id="footer">
     <div>
       <img class="" width="150px" style="margin-bottom: 7px; padding: 5px;" src="{% static 'images/hflogo.png' %}">  Ltd.&copy; 
@@ -381,6 +382,21 @@ ul li:hover:nth-child(4) a:after{
  
 
 
+</div>
+</div>
+<div class="container">
+
+
+<div id="geeks-countdown">
+  <h1 class="text-center timerclock">MILLIYAR COUNTDOWN</h1>
+  <div id="clock" ></div>
+  <div id="units">
+    <span class="timercolor">Days</span>
+    <span class="timercolor">Hours</span>
+    <span class="timercolor">Minutes</span>
+    <span class="timercolor">Seconds</span>
+  </div>
+</div>
 </div>
     <span style="visibility:hidden" id="time">{{timer.date}}</span>
     <script>
