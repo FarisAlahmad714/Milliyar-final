@@ -100,13 +100,13 @@
   opacity:1;
 }
 #geeks-countdown{
-  width: 850px;
+  
   margin: 10% auto;
 }
 #clock span{
   float: left;
   text-align: center;
-  font-size: 84px;
+  font-size: 80px;
   margin: 0 2.5%;
   color: #fff;
   padding: 20px;
@@ -114,6 +114,12 @@
   border-radius: 20px;
   box-sizing: border-box;
   animation:animationtimer 10s infinite
+}
+@media screen and (max-width: 600px) {
+ #clock span{
+  margin: 0 1.9%;
+   
+ }
 }
 #clock:after{
   content: "";
@@ -562,10 +568,10 @@ ul li:hover:nth-child(4) a:after{
 
 
 
-     
+     <div class="container">
 <div id="geeks-countdown">
       <h1 class="text-center timerclock">MILLIYAR COUNTDOWN</h1>
-      <div id="clock"></div>
+      <div id="clock" ></div>
       <div id="units">
         <span class="timercolor">Days</span>
         <span class="timercolor">Hours</span>
@@ -573,6 +579,7 @@ ul li:hover:nth-child(4) a:after{
         <span class="timercolor">Seconds</span>
       </div>
     </div>
+  </div>
 
     <span style="visibility:hidden" id="time">{{timer.date}}</span>
     
