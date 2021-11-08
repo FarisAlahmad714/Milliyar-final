@@ -14,7 +14,7 @@ from django.utils.html import strip_tags
 # from django.conf import settings
 
 # Create your views here.
-
+# ok
 # price_1ICV7qBBFg9oIquvaWQhDmqP
 
 
