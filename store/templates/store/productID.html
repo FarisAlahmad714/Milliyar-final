@@ -36,7 +36,6 @@
         >
           Add to Cart
         </button>
-        <a href="{% url 'shop' %}">Back to Shop</a>
         {% else %}
         <p>Size: Large</p>
         <p>In Stock: <span id="pstock">{{product.in_stock}} </span></p>
@@ -60,6 +59,7 @@
           Built to last,every detail of this sweatshirt is the best of the best and meticulously designed. From the fit, color palette, specialty yarns, and antique trims, to the way the fabric is knit, dyed, cut, and sewn, it has everything we think a sweatshirt needs without having too much..
         </p>
         <hr />
+        <a href="{% url 'shop' %}">Back to Shop</a>
       </div>
     </div>
   </div>
