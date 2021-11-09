@@ -1,7 +1,10 @@
 #!/bin/bash
 
-
-cd /home/ubuntu/app
+cd /home/ubuntu
 source env/bin/activate
+sudo cp .env_sample .env
+sudo mv .env app/
+cd /home/ubuntu/app
+
 pip install -r requirements.txt
 python manage.py migrate
