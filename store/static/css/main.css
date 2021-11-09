@@ -567,9 +567,10 @@ a:hover{
 /* @media screen and (max-width: 500px) { 
   div{width:100%;} 
 } */
+/* 1 */
 @media screen and (max-device-width: 767px) {
   html { background: url(https://thenewcode.com/assets/images/polina.jpg) #000 no-repeat center center fixed; }
-  #bgvid , #polina, { display: none;width: 100%;
+  #bgvid , #polina, { display: none;width: 100% ;
     height: auto;
     cursor: default; }
 }
