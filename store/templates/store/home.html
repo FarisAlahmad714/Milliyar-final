@@ -445,7 +445,7 @@ ul li:hover:nth-child(4) a:after{
       </div>
     </div> -->
     <hr>
-    <div  style="margin-bottom:200px mt-5 ;"  >
+    <!-- <div  style="margin-bottom:200px mt-5 ;"  >
       <div  id="responsive">
         <div class="container-box">
           <div class="normal-div" id="div-1">
@@ -484,12 +484,36 @@ ul li:hover:nth-child(4) a:after{
             </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <hr>
-    
+    <!-- BACKGROUND VIDEO NOT RESPONSIVE -->
+    <div id="responsive">
+      <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg"  playsinline autoplay muted loop>
+        <!-- 
+      - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+      WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+      <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
+      <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
+
+      </video>
+      <div class="z-depth-5">
+        <div class="box-element product">
+      <div id="polina;" class="text-center mt-5 "> 
+        <!-- collection-text IF NEEDED IN CLASS ABOVE  -->
+      <h1 id="responsive">MULTICULTURAL UNIFICATION</h1>
+      <p id="responsive" >filmed by Arthur Canon 2021
+      <!-- <p><a href="http://thenewcode.com/777/Create-Fullscreen-HTML5-Page-Background-Video">original article</a> -->
+      <p id="responsive" class="text-center pt-5" style="text-indent: 35px;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.</p>
+      <p style="text-indent: 25px;"> Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.</p>
+      <!-- <button>Pause</button> -->
+      </div>
+        </div>
+        </div>
+        
+  </div>
     <!-- VideoComment -->
     <div class="collection-text d-inline-block">
-      <h2 class="text-center mt-5" >  MULTICULTURAL UNIFICATION  </h2>
+      <!-- <h2 class="text-center mt-5" >  MULTICULTURAL UNIFICATION  </h2> -->
 
     <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"  width="100%"frameborder="0" allowfullscreen></iframe>
     </div>
@@ -632,7 +656,42 @@ ul li:hover:nth-child(4) a:after{
       
       </div>
 
+<script>
+  var vid = document.getElementById("bgvid");
+  var pauseButton = document.querySelector("#polina button");
 
+  if (window.matchMedia('(prefers-reduced-motion)').matches) {
+      vid.removeAttribute("autoplay");
+      vid.pause();
+      pauseButton.innerHTML = "Paused";
+  }
+
+  function vidFade() {
+    vid.classList.add("stopfade");
+  }
+
+  vid.addEventListener('ended', function()
+  {
+  // only functional if "loop" is removed 
+  vid.pause();
+  // to capture IE10
+  vidFade();
+  }); 
+
+
+  pauseButton.addEventListener("click", function() {
+    vid.classList.toggle("stopfade");
+    if (vid.paused) {
+      vid.play();
+      pauseButton.innerHTML = "Pause";
+    } else {
+      vid.pause();
+      pauseButton.innerHTML = "Paused";
+    }
+  })
+
+
+</script>
 <!-- BUTTON SCRIPT -->
 <script src="https://tympanus.net/codrops/adpacks/cda.js"></script>
 
