@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -rfv /home/ubuntu/app/
+sudo rm -rfv /home/ubuntu/app/
 mkdir app
