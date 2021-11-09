@@ -43,7 +43,6 @@ body {
 @keyframes myanimation {
   0% {
     background-color: #212121;
-
   }
   25% {
     background-color: white;
@@ -59,8 +58,6 @@ body {
   }
 }
 
-
-
 .materialboxed {
   cursor: pointer;
 }
@@ -70,36 +67,34 @@ body {
   text-align: center;
 }
 
- #display{
+#display {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
 
-.video-caption{
-
+.video-caption {
   line-break: 2px;
   animation: videocap 10s infinite;
 }
 
-  @keyframes videocap {
-    0% {
-      background-color: #212121;
-  
-    }
-    25% {
-      background-color: white;
-    }
-    50% {
-      background-color: white;
-    }
-    75% {
-      background-color: #212121;
-    }
-    100% {
-      background-color: #212121;
-    }
+@keyframes videocap {
+  0% {
+    background-color: #212121;
+  }
+  25% {
+    background-color: white;
+  }
+  50% {
+    background-color: white;
+  }
+  75% {
+    background-color: #212121;
+  }
+  100% {
+    background-color: #212121;
+  }
 }
 
 /* CAROUSEL */
@@ -440,47 +435,46 @@ font-size: 14px;
   color: #fff;
 }
 
-
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
-.container-box{
-  margin:0;
-  padding:0;
-  width:100%;
+.container-box {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-.normal-div{
-  width:33.33%;
-  height:100%;
-  position:relative;
-  border:1px solid black;
-  float:left;
+.normal-div {
+  width: 33.33%;
+  height: 100%;
+  position: relative;
+  border: 1px solid black;
+  float: left;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-.expanded-div{
-    width:50%;
-    height: 50%;
+.expanded-div {
+  width: 50%;
+  height: 50%;
 }
-.compressed-div{
-  width:25%;
+.compressed-div {
+  width: 25%;
 }
-#div-1{
-  background-color:none;
+#div-1 {
+  background-color: none;
 }
-#div-2{
-  background-color:none;
+#div-2 {
+  background-color: none;
 }
-#div-3{
-  background-color:none;
+#div-3 {
+  background-color: none;
 }
-a.expansion-btn{
-  position:absolute;
-  top:10px;
-  right:10px;
-  font-weight:bold;
-  cursor:pointer;
+a.expansion-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* VIDEO BACKGROUND HOME  NOT RESPONSIVE*/
@@ -488,40 +482,41 @@ a.expansion-btn{
   margin: 0;
   background: #000; 
 } */
-video { 
-    position: fixed;
+video {
+  /* position: fixed;
     top: 50%;
     left: 50%;
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -100;
-    width: 100%;
-    height: auto;
-    cursor: default;
-    transform: translateX(-50%) translateY(-50%);
- background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+    z-index: -100; */
+  width: 100%;
+  height: 500px;
+  /* height: auto; */
+  cursor: default;
+  /* transform: translateX(-50%) translateY(-50%); */
+  background: url("//demosthenes.info/assets/images/polina.jpg") no-repeat;
   background-size: cover;
   transition: 1s opacity;
 }
-.stopfade { 
-   opacity: .5;
+.stopfade {
+  opacity: 0.5;
 }
 
-#polina { 
+#polina {
   font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-  font-weight:100; 
-  background: rgba(0,0,0,0.3);
+  font-weight: 100;
+  background: rgba(0, 0, 0, 0.3);
   color: white;
   /* padding: 2rem; */
   width: 100%;
-  margin:2rem;
+  margin: 2rem;
   float: right;
   font-size: 1.2rem;
   /* animation: mycollection 10s infinite; */
-  }
-    /* @keyframes mycollection {
+}
+/* @keyframes mycollection {
       0% {color: white;}
       25%{color:#212121;}
       50%{color:#212121;}
@@ -536,21 +531,21 @@ video {
   margin-top: 0;
   letter-spacing: .3rem;
 } */
-#polina button { 
+#polina button {
   display: block;
   width: 80%;
-  padding: .4rem;
-  border: none; 
-  margin: 1rem auto; 
+  padding: 0.4rem;
+  border: none;
+  margin: 1rem auto;
   font-size: 1.3rem;
-  background: rgba(255,255,255,0.23);
+  background: rgba(255, 255, 255, 0.23);
   color: #fff;
-  border-radius: 3px; 
+  border-radius: 3px;
   cursor: pointer;
-  transition: .3s background;
+  transition: 0.3s background;
 }
-#polina button:hover { 
-   background: rgba(0,0,0,0.5);
+#polina button:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* a {
@@ -569,10 +564,17 @@ a:hover{
 } */
 /* 1 */
 @media screen and (max-device-width: 767px) {
-  html { background: url(https://thenewcode.com/assets/images/polina.jpg) #000 no-repeat center center fixed; }
-  #bgvid , #polina, { display: none;width: 100% ;
+  html {
+    background: url(https://thenewcode.com/assets/images/polina.jpg) #000
+      no-repeat center center fixed;
+  }
+  #bgvid,
+  #polina {
+    display: none;
+    width: 100%;
     height: auto;
-    cursor: default; }
+    cursor: default;
+  }
 }
 /* PRODUCT DETAIL PAGE */
 
@@ -757,14 +759,23 @@ a:hover{
   cursor: default;
   animation: mycollection 10s infinite;
 }
-  @keyframes mycollection {
-    0% {color: white;}
-    25%{color:#212121;}
-    50%{color:#212121;}
-    75%{color:white;}
-    100% {color: white;}
-    
+@keyframes mycollection {
+  0% {
+    color: white;
   }
+  25% {
+    color: #212121;
+  }
+  50% {
+    color: #212121;
+  }
+  75% {
+    color: white;
+  }
+  100% {
+    color: white;
+  }
+}
 gallery {
   width: 300px;
   height: 200px;
@@ -823,5 +834,3 @@ gallery {
   width: 100%;
   position: fixed;
 }
-
-
