@@ -1,4 +1,5 @@
 function updateTimer(deadline) {
+<<<<<<< HEAD
   function changeTimezone(date, ianatz) {
     // suppose the date is 12:00 UTC
     var invdate = new Date(
@@ -18,6 +19,9 @@ function updateTimer(deadline) {
   var there = changeTimezone(here, "America/Los_Angeles");
   var time = deadline - there;
 
+=======
+  var time = deadline - new Date();
+>>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   let days = Math.floor(time / (1000 * 60 * 60 * 24));
   let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
   let minutes = Math.floor((time / 1000 / 60) % 60);
@@ -43,6 +47,10 @@ function animateClock(span) {
 }
 
 function startTimer(id, deadline) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   var timerInterval = setInterval(function () {
     var clock = document.getElementById(id);
     var timer = updateTimer(deadline);
@@ -81,6 +89,7 @@ function startTimer(id, deadline) {
 window.onload = function () {
   let backendDate = document.getElementById("time").innerHTML;
   var deadline = new Date(backendDate); // deadline - end time of countdown
+<<<<<<< HEAD
   console.log(deadline, "time");
 
   function changeTimezone(date, ianatz) {
@@ -107,6 +116,9 @@ window.onload = function () {
   console.log(time, "time");
   // console.log(`Here: ${here.toString()}\nToronto: ${there}`);
 
+=======
+  var time = deadline - new Date();
+>>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   let days = Math.floor(time / (1000 * 60 * 60 * 24));
   let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
   let minutes = Math.floor((time / 1000 / 60) % 60);
