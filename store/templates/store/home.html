@@ -4,15 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milliyar | Home</title>
-  {% load static %}
+  <title>Milliyar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-  <meta property='og:title' content='Milliyar Home Ltd'/>
-  <meta property='og:image' content="{% static 'images/shopbutton.png' %}" />
-  <meta property="og:image:alt" content="{% static 'images/shopbutton.png' %}">
-  <meta property='og:description' content="'Established in 2021 ,Arabic for 'billion', Milliyar was chosen to represent our brand's effort to bridge the gap between the rich, diverse culture of the East and the vibrant, fast-paced culture of the West..'"/>
-  <meta property='og:url' content='https://www.milliyar.com/home'/>
-
+  {% load static %}
   <link rel="shortcut icon" href="{% static 'images/white.ico' type='image/x-icon' %}">
   <!-- BTN INTERACTIVE  -->
   <link rel="stylesheet" href="https://use.typekit.net/rnz2bks.css">
@@ -342,9 +336,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{% url 'shop' %}"><img class="materialboxed" width="150px" style="margin-bottom: 7px;"
         src="{% static 'images/hflogo.png' %}">
-      </a>
+    </a>
 
-  
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -389,10 +383,10 @@
     <div class="wrap">
       <div id="arrow-left" class="arrow"></div>
       <div id="slider">
-        <p class="split__left-right"collection-text"; collection-text" ALIGN=CENTER>
-            For the love of unity
-            <br> collection
-          </p>
+        <p class="split__left-right" collection-text"; collection-text" ALIGN=CENTER>
+          For the love of unity
+          <br> collection
+        </p>
         <div class="slide slide1">
           <div class="slide-content">
             <!-- <img src="{% static 'images/transparentproto.png' %}"  width='30%'alt=""> -->
@@ -439,19 +433,18 @@
       </a>
     </li>
 
-    
+
     <!-- BACKGROUND VIDEO NOT RESPONSIVE -->
     <div id="responsive">
-      <video id="bgvid" playsinline autoplay muted
-        loop>
+      <video id="bgvid" playsinline autoplay muted loop>
         <!-- 
       - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
       WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <source src="{% static 'images/tru2.mp4' %}" type="video/webm">
         <source src="{% static 'images/tru2.mp4' %}" type="video/mp4">
-    </video>
-  </div>
-  
+      </video>
+    </div>
+
     <div class="z-depth-5">
       <div class="box-element product">
         <div id="polina;" class="text-center mt-5 ">
@@ -474,9 +467,9 @@
 
     <!-- VideoComment -->
     <!-- <div class="collection-text d-inline-block"> -->
-      <!-- <h2 class="text-center mt-5" >  MULTICULTURAL UNIFICATION  </h2> -->
+    <!-- <h2 class="text-center mt-5" >  MULTICULTURAL UNIFICATION  </h2> -->
 
-      <!-- <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"
+    <!-- <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"
         width="100%" frameborder="0" allowfullscreen></iframe>
     </div> -->
 
@@ -529,7 +522,7 @@
     {% comment %} <div>
       <iframe id="responsive" src="https://player.vimeo.com/video/582819374?autoplay=1&loop=1&autopause=0&muted=1"
         width="100%" frameborder="0" allowfullscreen></iframe>
-      <hr>  
+      <hr>
     </div> {% endcomment %}
     <!--        -->
 
@@ -546,9 +539,12 @@
     <!-- <h4>..</h4> -->
   </div>
 
+
+
   <div class="container">
     <div id="geeks-countdown">
-      <h1 class="text-center timerclock"><img src="{% static 'images/hflogo.png' %}"alt="" width="300px"> <br> COUNTDOWN</h1>
+      <h1 class="text-center timerclock"><img src="{% static 'images/hflogo.png' %}" alt="" width="300px"> <br>
+        COUNTDOWN</h1>
       <div id="clock"></div>
       <div id="units">
         <span class="timercolor">Days</span>
