@@ -1,5 +1,23 @@
 function updateTimer(deadline) {
-  var time = deadline - new Date();
+  function changeTimezone(date, ianatz) {
+    // suppose the date is 12:00 UTC
+    var invdate = new Date(
+      date.toLocaleString("en-US", {
+        timeZone: ianatz,
+      })
+    );
+
+    // then invdate will be 07:00 in Toronto
+    // and the diff is 5 hours
+    var diff = date.getTime() - invdate.getTime();
+
+    // so 12:00 in Toronto is 17:00 UTC
+    return new Date(date.getTime() - diff); // needs to substract
+  }
+  var here = new Date();
+  var there = changeTimezone(here, "America/Los_Angeles");
+  var time = deadline - there;
+
   let days = Math.floor(time / (1000 * 60 * 60 * 24));
   let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
   let minutes = Math.floor((time / 1000 / 60) % 60);
@@ -25,7 +43,6 @@ function animateClock(span) {
 }
 
 function startTimer(id, deadline) {
-
   var timerInterval = setInterval(function () {
     var clock = document.getElementById(id);
     var timer = updateTimer(deadline);
@@ -64,7 +81,32 @@ function startTimer(id, deadline) {
 window.onload = function () {
   let backendDate = document.getElementById("time").innerHTML;
   var deadline = new Date(backendDate); // deadline - end time of countdown
-  var time = deadline - new Date();
+  console.log(deadline, "time");
+
+  function changeTimezone(date, ianatz) {
+    // suppose the date is 12:00 UTC
+    var invdate = new Date(
+      date.toLocaleString("en-US", {
+        timeZone: ianatz,
+      })
+    );
+
+    // then invdate will be 07:00 in Toronto
+    // and the diff is 5 hours
+    var diff = date.getTime() - invdate.getTime();
+
+    // so 12:00 in Toronto is 17:00 UTC
+    return new Date(date.getTime() - diff); // needs to substract
+  }
+
+  // E.g.
+  var here = new Date();
+  var there = changeTimezone(here, "America/Los_Angeles");
+  var time = deadline - there;
+
+  console.log(time, "time");
+  // console.log(`Here: ${here.toString()}\nToronto: ${there}`);
+
   let days = Math.floor(time / (1000 * 60 * 60 * 24));
   let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
   let minutes = Math.floor((time / 1000 / 60) % 60);

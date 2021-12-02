@@ -32,17 +32,29 @@ def home(request):
 def main(request):
     timer = Timer.objects.all()
     context = {"timer": timer[0]}
-    # return HttpResponse(" YO")
     return render(request, "store/main.html", context)
 
 
 def about(request):
     timer = Timer.objects.all()
-    context = {"timer": timer[0]}
-    return render(request, "store/about.html",context)
+    context = {
+        "timer": timer[0],
+        "object": {
+            "title": "About",
+            "slug": "about",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu",
+        },
+    }
+
+    # slug
+    # description- content
+    # title
+    return render(request, "store/about.html", context)
+
 
 # def index(request):
 #     return render(request, "store/index.html")
+
 
 def shop(request):
 
@@ -51,7 +63,16 @@ def shop(request):
     timer = Timer.objects.all()
 
     products = Product.objects.all()
-    context = {"products": products, "cartItems": cartItems, "timer": timer[0]}
+    context = {
+        "products": products,
+        "cartItems": cartItems,
+        "timer": timer[0],
+        "object": {
+            "title": "Shop",
+            "slug": "shop",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu",
+        },
+    }
     return render(request, "store/shop.html", context)
 
 
@@ -68,6 +89,11 @@ def cart(request):
         "order": order,
         "cartItems": cartItems,
         "timer": timer[0],
+        "object": {
+            "title": "Cart",
+            "slug": "cart",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu",
+        },
     }
     return render(request, "store/cart.html", context)
 
@@ -81,7 +107,16 @@ def productdetails(request, id):
     return render(
         request,
         "store/productID.html",
-        {"product": product, "cartItems": cartItems, "timer": timer[0]},
+        {
+            "product": product,
+            "cartItems": cartItems,
+            "timer": timer[0],
+            "object": {
+                "title": "Product" + product.name,
+                "slug": "product/" + product.id,
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu",
+            },
+        },
     )
 
 
@@ -126,7 +161,11 @@ def checkout(request):
         "order": order,
         "cartItems": cartItems,
         "timer": timer[0],
-
+        "object": {
+            "title": "Checkout",
+            "slug": "checkout",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu",
+        },
     }
     # print(context)
     # print(order)
@@ -135,21 +174,21 @@ def checkout(request):
 
 
 def updateItem(request):
-    print("running")
+
     data = json.loads(request.body)
     productId = data["productId"]
     action = data["action"]
     stock = data["stock"]
-    print("Action:", action)
-    print("productId:", productId)
-    print("stock", stock)
+    # print("Action:", action)
+    # print("productId:", productId)
+    # print("stock", stock)
 
     customer = request.user.customer
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-    print("qty", orderItem.quantity)
+    # print("qty", orderItem.quantity)
     if product.in_stock >= int(orderItem.quantity):
 
         if action == "add" or action == "addcart":
@@ -176,7 +215,7 @@ from django.template.loader import render_to_string
 
 # @csrf_exempt
 def processOrder(request):
-    print("ok")
+
     data = cartData(request)
     items = data["items"]
     order = data["order"]
@@ -243,7 +282,7 @@ def processOrder(request):
         name = data["form"]["name"]
         address = data["shipping"]["address"]
         city = data["shipping"]["city"]
-        state=data["shipping"]["state"]
+        state = data["shipping"]["state"]
 
         email_verification(
             name,
@@ -259,7 +298,9 @@ def processOrder(request):
     return JsonResponse("Payment Completed", safe=False)
 
 
-def email_verification(name, email1, address, city,state,cart_items, cart_total, products_list):
+def email_verification(
+    name, email1, address, city, state, cart_items, cart_total, products_list
+):
     subject = "Milliyar"
     message = render_to_string(
         "store/tyemail.html",
@@ -267,8 +308,8 @@ def email_verification(name, email1, address, city,state,cart_items, cart_total,
             "name": name,
             "email": email1,
             "address": address,
-            "city":city,
-            "state":state,
+            "city": city,
+            "state": state,
             "cart_items": cart_items,
             "cart_total": cart_total,
             "product_list": products_list,
