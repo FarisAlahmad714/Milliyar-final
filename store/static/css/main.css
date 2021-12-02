@@ -132,10 +132,7 @@ body {
 } */
 
 .slide-content {
-<<<<<<< HEAD
   background: rgba(117, 117, 90, 0.2);
-=======
->>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -488,7 +485,6 @@ a.expansion-btn {
 } */
 video {
   position: fixed;
-<<<<<<< HEAD
   top: 50%;
   left: 50%;
   min-width: 100%;
@@ -496,15 +492,6 @@ video {
   width: auto;
   height: auto;
   z-index: -100;
-=======
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
->>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   width: 100%;
   /* height: 500px; */
   height: auto;
@@ -578,17 +565,10 @@ a:hover{
 } */
 /* 1 */
 @media screen and (max-device-width: 767px) {
-<<<<<<< HEAD
   /* html {
     background: url(https://thenewcode.com/assets/images/polina.jpg) #000
       no-repeat center center fixed;
   } */
-=======
-  html {
-    background: url(https://thenewcode.com/assets/images/polina.jpg) #000
-      no-repeat center center fixed;
-  }
->>>>>>> ac87dae9c259870ce7ad63b7918d93d9a34248b2
   #bgvid,
   #polina {
     /* display: none; */
