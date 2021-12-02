@@ -1,0 +1,99 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+
+<div id="content-wrapper">
+  <div class="column">
+    <div class="frame">
+      <img id="featured" src="{{product.image.url}}" />
+    </div>
+    <div id="slide-wrapper2">
+      <!-- <img id="slideLeft" class="arrow" src="{% static 'images/arrow-left2.png'%}"> -->
+
+      <div id="slider2">
+        {% for ProductImages in product.productimages_set.all %}
+        <img class="thumbnail" src="{{ProductImages.image.url}}" />
+        {% endfor %}
+      </div>
+
+      <!-- <img id="slideRight" class="arrow" src="{% static 'images/arrow-right2.png'%}"> -->
+    </div>
+  </div>
+
+  <div class="z-depth-5">
+    <div class="box-element product">
+      <div class="column" id="responsive">
+        <h1>{{product.name}}</h1>
+
+        {% if product.in_stock <= 0 %}
+        <p>Sold out</p>
+        <button
+          disabled
+          id="responsive"
+          data-stock="{{product.in_stock}}"
+          data-product="{{product.id}}"
+          data-action="add"
+          data-name="{{product.name}}"
+          class="btn btn-outline-dark add-btn update-cart"
+        >
+          Add to Cart
+        </button>
+        {% else %}
+        <p>Size: Large</p>
+        <p>In Stock: <span id="pstock">{{product.in_stock}} </span></p>
+        <button
+          id="responsive"
+          data-stock="{{product.in_stock}}"
+          data-product="{{product.id}}"
+          data-action="add"
+          data-name="{{product.name}}"
+          class="btn btn-outline-dark add-btn update-cart"
+        >
+          Add to Cart
+        </button>
+
+        {% endif %}
+        <hr />
+
+        <h3>${{product.price | floatformat:2}}</h3>
+
+        <p>
+          Built to last,every detail of this sweatshirt is the best of the best and meticulously designed. From the fit, color palette, specialty yarns, and antique trims, to the way the fabric is knit, dyed, cut, and sewn, it has everything we think a sweatshirt needs without having too much..
+        </p>
+        <hr />
+        <a href="{% url 'shop' %}">Back to Shop</a>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <script type="text/javascript">
+    let thumbnails = document.getElementsByClassName("thumbnail");
+
+    let activeImages = document.getElementsByClassName("active");
+
+    for (var i = 0; i < thumbnails.length; i++) {
+      thumbnails[i].addEventListener("mouseover", function () {
+        console.log(activeImages);
+
+        if (activeImages.length > 0) {
+          activeImages[0].classList.remove("active");
+        }
+
+        this.classList.add("active");
+        document.getElementById("featured").src = this.src;
+      });
+    }
+
+    let buttonRight = document.getElementById("slideRight");
+    let buttonLeft = document.getElementById("slideLeft");
+
+    buttonLeft.addEventListener("click", function () {
+      document.getElementById("slider").scrollLeft -= 180;
+    });
+
+    buttonRight.addEventListener("click", function () {
+      document.getElementById("slider").scrollLeft += 180;
+    });
+  </script>
+
+  {% endblock content %}
+</div>

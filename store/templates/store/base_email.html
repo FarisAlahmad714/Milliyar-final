@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+ 
+    <style type="text/css">
+      /* CLIENT-SPECIFIC STYLES */
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      .text-center {
+        text-align: center;
+      }
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+
+      /* RESET STYLES */
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+
+      table {
+        border-collapse: collapse !important;
+      }
+
+      body {
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+      }
+
+      /* iOS BLUE LINKS */
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      /* MOBILE STYLES */
+      @media screen and (max-width: 600px) {
+        h1 {
+          font-size: 32px !important;
+          line-height: 32px !important;
+        }
+      }
+
+      /* ANDROID CENTER FIX */
+      div[style*="margin: 16px 0;"] {
+        margin: 0 !important;
+      }
+    </style>
+    {% block header_style %} {% endblock %}
+  </head>
+  <body
+    style="
+      background-color: #f4f4f4;
+      margin: 0 !important;
+      padding: 0 !important;
+    "
+  >
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!-- LOGO -->
+      <tr>
+        <td bgcolor="#F8F8FF" align="center">
+          <table
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            width="100%"
+            style="max-width: 600px"
+          >
+            <tr>
+              <td
+                align="center"
+                valign="top"
+                style="padding: 40px 10px 40px 10px"
+              >
+                <img
+                  alt="Logo"
+                  src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
+                  width="40"
+                  height="40"
+                  border="0"
+                  style="
+                    display: block;
+                    width: 40px;
+                    max-width: 30%;
+                    min-width: 30%;
+                    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                    color: #ffffff;
+                    font-size: 18px;
+                    background: white;
+                    padding: 10px;
+                  "
+                />
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      {% block email_title_block %}
+      <!-- HERO -->
+      <tr>
+        <td bgcolor="#4285f4" align="center" style="padding: 0px 10px 0px 10px">
+          <table
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            width="100%"
+            style="max-width: 600px"
+          >
+            <tr>
+              <td
+                bgcolor="#ffffff"
+                align="center"
+                valign="top"
+                style="
+                  padding: 40px 20px 20px 20px;
+                  border-radius: 4px 4px 0px 0px;
+                  color: #383838;
+                  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                  font-size: 48px;
+                  font-weight: 400;
+                  letter-spacing: 4px;
+                  line-height: 48px;
+                "
+              >
+                <h1 style="font-size: 48px; font-weight: 400; margin: 0">
+                  {% block email_title %}{% endblock %}
+                </h1>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      {% endblock %}
+      <!-- COPY BLOCK -->
+      <tr>
+        <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px">
+          <table
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            width="100%"
+            style="max-width: 600px"
+          >
+            <tr>
+              <td
+                bgcolor="#ffffff"
+                align="left"
+                style="
+                  padding: 20px 30px 30px 30px;
+                  color: #4b4b4b;
+                  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                  font-size: 18px;
+                  font-weight: 400;
+                  line-height: 25px;
+                "
+              >
+                <p style="margin: 0">{% block email_content %}{% endblock %}</p>
+              </td>
+            </tr>
+            {% block target_url_block %}
+            <tr>
+              <td
+                bgcolor="#ffffff"
+                align="left"
+                style="
+                  padding: 0px 30px 20px 30px;
+                  color: #4b4b4b;
+                  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                  font-size: 18px;
+                  font-weight: 400;
+                  line-height: 25px;
+                "
+              >
+                <p style="margin: 0">{% block target_url %}{% endblock %}</p>
+              </td>
+            </tr>
+            {% endblock %}
+            <tr>
+              <td
+                bgcolor="#ffffff"
+                align="left"
+                style="
+                  padding: 0px 30px 40px 30px;
+                  border-radius: 0px 0px 4px 4px;
+                  color: #4b4b4b;
+                  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                  font-size: 18px;
+                  font-weight: 400;
+                  line-height: 25px;
+                "
+              >
+              <a href=""
+              <img 
+              alt="icon"
+               width="10"
+                  height="10"
+                  border="0"
+                  style="
+                    display: block;
+                    width: 40px;
+                    max-width: 30%;
+                    min-width: 30%;
+                    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                    color: #ffffff;
+                    font-size: 18px;
+                    background: white;
+                    padding: 10px;
+                  "
+              
+              src="https://png.pngtree.com/png-clipart/20180515/ourmid/pngtree-facebook-logo-facebook-icon-png-image_3566127.png" 
+              />
+                  <img 
+              alt="icon"
+               width="40"
+                  height="40"
+                  border="0"
+                  style="
+                    display: block;
+                    width: 40px;
+                    max-width: 40px;
+                    min-width: 40px;
+                    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+                    color: #ffffff;
+                    font-size: 18px;
+                    background: white;
+                    padding: 10px;
+                  "
+              
+              src="https://image.similarpng.com/very-thumbnail/2020/12/Illustration-of-Google-icon-on-transparent-background-PNG.png" 
+              />
+<ul>
+              <li>
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                  <span> - Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                  <span> - Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-google-plus" aria-hidden="true"></i>
+                  <span> - Google</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                  <span> - Instagram</span>
+                </a>
+              </li>
+              </ul>
+                <p style="margin: 0">
+                  Sincerely<br/>
+                  <br>
+                  Milliyar 
+                </p>
+                <!-- PUT A PICTURE OF MILLIYAR AND A BUTTON TO SHOP -->
+                <!-- <div>
+                  <button><a>SHOP</a></button>
+                </div> -->
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

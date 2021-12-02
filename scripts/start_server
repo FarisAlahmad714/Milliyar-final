@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /home/ubuntu
+sudo chmod a+w app
+cd /home/ubuntu/app
+source env/bin/activate
+python manage.py collectstatic --noinput
+sudo service nginx restart
+sudo supervisorctl restart all

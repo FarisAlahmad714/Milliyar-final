@@ -1,0 +1,44 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+      <!-- WHO WE ARE -->
+      <div class="split">
+        <div class="split__left-right split__left-right--finn" id="two"  class="container">
+          <img class="split__left-right__avatar avatar--finn"  class="column" class="image"src="{% static 'images/11.jpg' %}" alt="Finn the Human" id="responsive"/>
+          <h3></h3>
+          <p>
+          </p>
+        </div>
+        <div class="split__left-right split__left-right--jake" id="one">
+          <img class="split__left-right__avatar avatar--jake"  class="column"  />
+             
+            <p class="whoweareintro" ALIGN=LEFT>Established in 2021 ,Arabic for 'billion', Milliyar was chosen to represent our brand's effort to bridge the gap between the rich, diverse culture of the East and the vibrant, fast-paced culture of the West. <br>
+      
+            <p class="whoweareintro" ALIGN=CENTER>Our client base is primarily made up of the internationally-minded, the third-culture-individuals, and those who don't want to be constrained by one single aesthetic; at Milliyar, we will always emphasize on multicultural unification because it is the pure embodiment of Milliyar.</br>
+      
+            <p class="whoweareintro" ALIGN=RIGHT> A voice for street wear & gear, we offer an array of creative premium clothing wear for different generations of creatives .<br> We aim to forge collaborations with brands that align with our standards & principles. Formed by love for hip-hop , art , skate , cultural fashion ,Milliyar pursues to spread from the Los Angeles community into a global prodigy .</p>
+          </p>
+        </div>
+      </div>
+      
+</div>
+{% endblock content %}
+<div class="loader">
+     <!-- <h4>..</h4> -->
+     <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
+     <!-- <h4>..</h4> -->
+</div>
+
+
+
+<!-- Loader -->
+
+<script>
+          window.addEventListener("load", function () {
+               const loader = document.querySelector(".loader");
+               loader.class += " hidden"
+          })
+          $(window).on("load", function () {
+               $(".loader-wrapper").fadeOut("slow");
+          })
+</script>
