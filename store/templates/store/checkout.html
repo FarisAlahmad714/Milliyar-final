@@ -6,24 +6,10 @@
         {% csrf_token %}
         <div id="user-info">
           <div class="form-field">
-            <input
-              required
-              class="form-control"
-              autocomplte="on"
-              type="text"
-              name="name"
-              placeholder="Name.."
-            />
+            <input required class="form-control" autocomplte="on" type="text" name="name" placeholder="Name.." />
           </div>
           <div class="form-field">
-            <input
-              required
-              class="form-control"
-              autocomplte="on"
-              type="email"
-              name="email"
-              placeholder="Email.."
-            />
+            <input required class="form-control" autocomplte="on" type="email" name="email" placeholder="Email.." />
           </div>
         </div>
 
@@ -32,50 +18,21 @@
           <p>Shipping Information:</p>
           <hr />
           <div class="form-field">
-            <input
-              class="form-control"
-              required
-              type="text"
-              name="address"
-              placeholder="Address.."
-            />
+            <input class="form-control" required type="text" name="address" placeholder="Address.." />
           </div>
           <div class="form-field">
-            <input
-              class="form-control"
-              required
-              type="text"
-              name="city"
-              placeholder="City.."
-            />
+            <input class="form-control" required type="text" name="city" placeholder="City.." />
           </div>
           <div class="form-field">
-            <input
-              class="form-control"
-              required
-              type="text"
-              name="state"
-              placeholder="State.."
-            />
+            <input class="form-control" required type="text" name="state" placeholder="State.." />
           </div>
           <div class="form-field">
-            <input
-              class="form-control"
-              required
-              type="text"
-              name="zipcode"
-              placeholder="Zip code.."
-            />
+            <input class="form-control" required type="text" name="zipcode" placeholder="Zip code.." />
           </div>
         </div>
 
         <hr />
-        <input
-          id="form-button"
-          class="btn btn-success btn-block"
-          type="submit"
-          value="Continue"
-        />
+        <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue" />
       </form>
     </div>
 
@@ -89,25 +46,27 @@
 
   <div class="col-lg-6">
     <div class="box-element">
-      <a class="btn btn-outline-dark" href="{% url 'cart' %}"
-        >&#x2190; Back to Cart</a
-      >
+      <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
       <hr />
       <h3>Order Summary</h3>
       <hr />
       {% for item in items %}
       <div class="cart-row">
         {% comment %}
-        <span id="productId" style="visibility: hidden"
-          >{{item.product.id}}</span
-        >
+        <span id="productId" style="visibility: hidden">{{item.product.id}}</span>
         {% endcomment %}
         <div style="flex: 2">
           <img class="row-image" src="{{item.product.imageURL}}" />
         </div>
-        <div style="flex: 2"><p>{{item.product.name}}</p></div>
-        <div style="flex: 1"><p>${{item.product.price|floatformat:2}}</p></div>
-        <div style="flex: 1"><p>x{{item.quantity}}</p></div>
+        <div style="flex: 2">
+          <p>{{item.product.name}}</p>
+        </div>
+        <div style="flex: 1">
+          <p>${{item.product.price|floatformat:2}}</p>
+        </div>
+        <div style="flex: 1">
+          <p>x{{item.quantity}}</p>
+        </div>
       </div>
       {% endfor %}
       <h5>Items: {{order.get_cart_items}}</h5>
@@ -117,7 +76,8 @@
 </div>
 
 
-<script src="https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit"></script>
+<script
+  src="https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit"></script>
 
 <!-- WORKING  -->
 <!-- https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit -->
@@ -125,10 +85,7 @@
 <!-- SANDBOX -->
 <!-- <script src="https://www.paypal.com/sdk/js?client-id=ATYi5OGXSrsvkutswINYABq9ziIYhUN4ATNWc1MfjA105Vu_noDaBhlhiG-UNyi0TYcIFkqbKr-9pwmb&currency=USD&disable-funding=credit"></script> -->
 
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"
-></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -173,99 +130,99 @@
 </script>
 
 <script type="text/javascript">
-      var shipping = '{{order.shipping}}'
-      var productIds = []
-     {% for item in items %}
-     productIds.push("{{item.product.id}}")
-     {% endfor %}
-     console.log("ids",productIds)
+  var shipping = '{{order.shipping}}'
+  var productIds = []
+  {% for item in items %}
+  productIds.push("{{item.product.id}}")
+  {% endfor %}
+  console.log("ids", productIds)
 
-      if (shipping == 'False'){
-          document.getElementById('shipping-info').innerHTML = ''
-      }
-
-
-      if (shipping == 'False' && user !='AnonymousUser'){
-          document.getElementById('form-wrapper').classList.add('hidden');
-          document.getElementById('payment-info').classList.remove('hidden');
+  if (shipping == 'False') {
+    document.getElementById('shipping-info').innerHTML = ''
   }
 
-      var form = document.getElementById('form')
 
-      csrftoken = form.getElementsByTagName("input")[0].value
+  if (shipping == 'False' && user != 'AnonymousUser') {
+    document.getElementById('form-wrapper').classList.add('hidden');
+    document.getElementById('payment-info').classList.remove('hidden');
+  }
 
-      form.addEventListener('submit', function(e){
-          e.preventDefault()
-          console.log('Form Submitted..')
+  var form = document.getElementById('form')
 
-          submitFormData() //TEST PAYMENT
+  csrftoken = form.getElementsByTagName("input")[0].value
 
-          // document.getElementById('form-button').classList.add('hidden');
-          document.getElementById('payment-info').classList.remove('hidden');
-           setTimeout(function(){
+  form.addEventListener('submit', function (e) {
+    e.preventDefault()
+    console.log('Form Submitted..')
+
+    // submitFormData() //TEST PAYMENT
+
+    // document.getElementById('form-button').classList.add('hidden');
+    document.getElementById('payment-info').classList.remove('hidden');
+    setTimeout(function () {
 
 
-               window.scrollTo(0,document.body.scrollHeight);
-            }, 200);
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 200);
 
 
+  })
+
+  // document.getElementById('make-payment').addEventListener('click', function(e){
+  //     submitFormData()
+  // })
+
+  function submitFormData() {
+    console.log('Payment Button Clicked')
+
+
+    var userFormData = {
+      'name': null,
+      'email': null,
+      'total': total,
+    }
+    var shippingInfo = {
+      'address': null,
+      'city': null,
+      'state': null,
+      'zipcode': null,
+    }
+
+    if (shipping != 'False') {
+      shippingInfo.address = form.address.value
+      shippingInfo.city = form.city.value
+      shippingInfo.state = form.state.value
+      shippingInfo.zipcode = form.zipcode.value
+
+    }
+
+
+    userFormData.name = form.name.value
+    userFormData.email = form.email.value
+    shippingInfo.email = form.email.value
+
+
+    var url = "/process_order/"
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo, 'product': productIds }),
+    })
+      .then((respone) => respone.json())
+      .then((data) => {
+        console.log('Success:', form.email.value);
+        alert('Transaction completed , confirmation was sent to ' + form.email.value + ' If you do not see the email in a few minutes, check your “junk mail” folder or “spam” folder. We make every effort to ensure that these emails are delivered. If you do not see the email in your inbox, please check your junk mail folder and add "support@milliyar.com” to your White List or Safe Sender List. ');
+
+
+        cart = {}
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain= ;path=/"
+
+        window.location.href = "{% url 'home' %}"
       })
-
-      // document.getElementById('make-payment').addEventListener('click', function(e){
-      //     submitFormData()
-      // })
-
-      function submitFormData(){
-          console.log('Payment Button Clicked')
-
-
-          var userFormData = {
-              'name':null,
-              'email':null,
-              'total': total ,
-          }
-          var shippingInfo = {
-              'address':null,
-              'city':null,
-              'state': null ,
-              'zipcode':null,
-          }
-
-          if (shipping != 'False'){
-              shippingInfo.address = form.address.value
-              shippingInfo.city = form.city.value
-              shippingInfo.state = form.state.value
-              shippingInfo.zipcode = form.zipcode.value
-
-          }
-
-
-              userFormData.name = form.name.value
-              userFormData.email = form.email.value
-              shippingInfo.email = form.email.value
-
-
-          var url = "/process_order/"
-          fetch(url, {
-              method:'POST',
-              headers:{
-                  'Content-Type':'application/json',
-                  'X-CSRFToken': csrftoken,
-              },
-              body:JSON.stringify({'form': userFormData, 'shipping': shippingInfo,'product':productIds}),
-          })
-          .then((respone) => respone.json())
-          .then((data) => {
-              console.log('Success:', form.email.value);
-                alert('Transaction completed , confirmation was sent to ' + form.email.value + ' If you do not see the email in a few minutes, check your “junk mail” folder or “spam” folder. We make every effort to ensure that these emails are delivered. If you do not see the email in your inbox, please check your junk mail folder and add "support@milliyar.com” to your White List or Safe Sender List. ');
-
-
-          cart ={}
-          document.cookie = 'cart=' +JSON.stringify(cart) + ";domain= ;path=/"
-
-              window.location.href = "{% url 'home' %}"
-          })
-      }
+  }
 </script>
 
 {% endblock content %}

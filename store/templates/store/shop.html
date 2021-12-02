@@ -6,19 +6,19 @@
           <div class="z-depth-5" id="responsive">
 
                <div class="box-element product">
-               
-          </div>
-          
-          <img id="responsive" src="{% static 'images/testmodel2.png' %}"  />
 
-          <!-- <div class="gallery-text">
+               </div>
+
+               <img id="responsive" src="{% static 'images/model2.jpg' %}" />
+
+               <!-- <div class="gallery-text">
 
           <h3>MILLIYAR ORIGINALS</h3>
 
           </div>     -->
+          </div>
+          <h1 class="collection-text" ALIGN="CENTER">FOR THE LOVE OF UNITY<br> COLLECTION</h1>
      </div>
-     <h1 class="collection-text" ALIGN="CENTER">FOR THE LOVE OF UNITY<br> COLLECTION</h1>
-</div>
 
 
      <!-- <div >
@@ -35,39 +35,44 @@
           {% for product in products %}
           <div class="col-lg-4">
                <a href="product/{{product.id}}">
-               <img id="pic-thumbnail" class="thumbnail1" id="pic" src="{{product.imageURL}}" alt="">
+                    <img id="pic-thumbnail" class="thumbnail1" id="pic" src="{{product.imageURL}}" alt="">
                </a>
                <div class="z-depth-5">
-               <div class="box-element product">
-                   <a href="product/{{product.id}}"><h6 id="responive" ALIGN="CENTER"><strong>{{product.name}}</strong></h6> </a> 
-                    <hr>
-                    {% if product.in_stock <= 0 %}
-                    <p>Sold out :( </p>
-                    <button disabled id="responsive" data-name="{{product.name}}" data-product={{product.id}}  data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
-                    {% else %}
-                    <p >In Stock: <span id="pstock">{{product.in_stock}} </span></p>
-                    <button id="responsive" data-stock={{product.in_stock}} data-name="{{product.name}}" data-product={{product.id}}  data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
-                    
-                    {% endif %}
-                    <h4 ALIGN="CENTER" style="display: inline-block,">${{product.price | floatformat:2}}</h4>
+                    <div class="box-element product">
+                         <a href="product/{{product.id}}">
+                              <h6 id="responive" ALIGN="CENTER"><strong>{{product.name}}</strong></h6>
+                         </a>
+                         <hr>
+                         {% if product.in_stock <= 0 %} <p>Sold out :( </p>
+                              <button disabled id="responsive" data-name="{{product.name}}" data-product={{product.id}}
+                                   data-action="add" class="btn btn-outline-dark add-btn update-cart">Add to
+                                   Cart</button>
+                              {% else %}
+                              <p>In Stock: <span id="pstock">{{product.in_stock}} </span></p>
+                              <button id="responsive" data-stock={{product.in_stock}} data-name="{{product.name}}"
+                                   data-product={{product.id}} data-action="add"
+                                   class="btn btn-outline-dark add-btn update-cart">Add to Cart</button>
+
+                              {% endif %}
+                              <h4 ALIGN="CENTER" style="display: inline-block,">${{product.price | floatformat:2}}</h4>
+                    </div>
                </div>
+               <hr>
           </div>
-          <hr>
+          {% endfor %}
      </div>
-     {% endfor %}
-</div>
-{% endblock content %}
-<div class="loader">
-     <!-- <h4>..</h4> -->
-     <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
-     <!-- <h4>..</h4> -->
-</div>
+     {% endblock content %}
+     <div class="loader">
+          <!-- <h4>..</h4> -->
+          <img src="{% static 'images/milliyarloader.gif' %}" alt="loading" />
+          <!-- <h4>..</h4> -->
+     </div>
 
 
 
-<!-- Loader -->
+     <!-- Loader -->
 
-<script>
+     <script>
           window.addEventListener("load", function () {
                const loader = document.querySelector(".loader");
                loader.class += " hidden"
@@ -75,4 +80,4 @@
           $(window).on("load", function () {
                $(".loader-wrapper").fadeOut("slow");
           })
-</script>
+     </script>
