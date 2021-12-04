@@ -23,43 +23,32 @@
       <div class="column" id="responsive">
         <h1>{{product.name}}</h1>
 
-        {% if product.in_stock <= 0 %}
-        <p>Sold out</p>
-        <button
-          disabled
-          id="responsive"
-          data-stock="{{product.in_stock}}"
-          data-product="{{product.id}}"
-          data-action="add"
-          data-name="{{product.name}}"
-          class="btn btn-outline-dark add-btn update-cart"
-        >
-          Add to Cart
-        </button>
-        {% else %}
-        <p>Size: Large</p>
-        <p>In Stock: <span id="pstock">{{product.in_stock}} </span></p>
-        <button
-          id="responsive"
-          data-stock="{{product.in_stock}}"
-          data-product="{{product.id}}"
-          data-action="add"
-          data-name="{{product.name}}"
-          class="btn btn-outline-dark add-btn update-cart"
-        >
-          Add to Cart
-        </button>
+        {% if product.in_stock <= 0 %} <p>Sold out</p>
+          <button disabled id="responsive" data-stock="{{product.in_stock}}" data-product="{{product.id}}"
+            data-action="add" data-name="{{product.name}}" class="btn btn-outline-dark add-btn update-cart">
+            Add to Cart
+          </button>
+          {% else %}
+          <p>Size: Large</p>
+          <p>In Stock: <span id="pstock">{{product.in_stock}} </span></p>
+          <button id="responsive" data-stock="{{product.in_stock}}" data-product="{{product.id}}" data-action="add"
+            data-name="{{product.name}}" class="btn btn-outline-dark add-btn update-cart">
+            Add to Cart
+          </button>
 
-        {% endif %}
-        <hr />
+          {% endif %}
+          <hr />
 
-        <h3>${{product.price | floatformat:2}}</h3>
+          <h3>${{product.price | floatformat:2}}</h3>
 
-        <p>
-          Built to last,every detail of this sweatshirt is the best of the best and meticulously designed. Center "Milliyar" piece carefully embroidered onto the center and the "Milliyar" logo stapled on the wrists for maximum simplicity and boldness. Also attached on the back is our signature "Milliyar Unity "label under the hood muff .
-        </p>
-        <hr />
-        <a href="{% url 'shop' %}">Back to Shop</a>
+          <p>
+            Built to last,every detail of this sweatshirt is the best of the best and meticulously designed. Center
+            "Milliyar" piece carefully embroidered onto the center and the "Milliyar" logo stapled on the wrists for
+            maximum simplicity and boldness. Also attached on the back is our signature "Milliyar Unity "holographic
+            label under the hood muff .
+          </p>
+          <hr />
+          <a href="{% url 'shop' %}">Back to Shop</a>
       </div>
     </div>
   </div>
