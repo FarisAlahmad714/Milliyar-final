@@ -1,3 +1,7 @@
+import stripe
+from django.core.mail import EmailMessage
+from django.views import View
+from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, HttpResponse
 from .models import *
@@ -27,6 +31,13 @@ def home(request):
     context = {"timer": timer[0]}
     # return HttpResponse(" YO")
     return render(request, "store/home.html", context)
+
+
+def newhome(request):
+    timer = Timer.objects.all()
+    context = {"timer": timer[0]}
+    # return HttpResponse(" YO")
+    return render(request, "store/newhome.html", context)
 
 
 def main(request):
@@ -120,33 +131,27 @@ def productdetails(request, id):
     )
 
 
-# def email(request):
-
-#     if request.method=="POST":
-#         message = request.POST['message']
-
-#         send_mail('Contact form',
-#                 message,
-#                 settings.EMAIL_HOST_USER,
-#                 ['email'],
-#                 fail_silently=False)
-#         return render(request, 'store/cart.html')
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-# stripe.api_key =settings.STRIPE_PRIVATE_KEY
+class CreateCheckoutSessionView(View):
 
-# stripe.checkout.Session.create(
-#     success_url="https://example.com/success",
-#     cancel_url="https://example.com/cancel"
-#     payment_method_types=["card"],
-#     line_items=[
-#         {
-#         "price": "price_H5ggYwtDq4fbrJ",
-#         "quantity": 2,
-#         },
-#     ],
-#     mode="payment",
-# )
+    def post(self, request, *args, **kwargs):
+        product = Product.objects.filter(pk=2).first()
+        print(product.stripe_price_id)
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price': product.stripe_price_id,
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url="/",
+            cancel_url="/",
+        )
+        return redirect(checkout_session.url)
 
 
 def checkout(request):
@@ -184,8 +189,10 @@ def updateItem(request):
 
     customer = request.user.customer
     product = Product.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    order, created = Order.objects.get_or_create(
+        customer=customer, complete=False)
+    orderItem, created = OrderItem.objects.get_or_create(
+        order=order, product=product)
 
     # print("qty", orderItem.quantity)
     if product.in_stock >= int(orderItem.quantity):
@@ -208,11 +215,8 @@ def updateItem(request):
     return JsonResponse({"quantity": orderItem.quantity}, safe=False)
 
 
-from django.core.mail import EmailMessage
-from django.conf import settings
-from django.template.loader import render_to_string
-
 # @csrf_exempt
+
 def processOrder(request):
     data = cartData(request)
     items = data["items"]

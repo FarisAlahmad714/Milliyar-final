@@ -34,7 +34,13 @@
         <hr />
         <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue" />
       </form>
+      <form action='/create-checkout-session/2/' method="POST">
+        {% csrf_token %}
+        <button type="submit">Checkout</button>
+      </form>
+
     </div>
+
 
     <br />
     <div class="box-element hidden" id="payment-info">
@@ -75,6 +81,8 @@
   </div>
 </div>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
 
 <script
   src="https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit"></script>

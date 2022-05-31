@@ -29,7 +29,7 @@ SECRET_KEY = "+g-@em!cu@qsdtj4ek8-y%z*2o7-r7m($zcg-tk5bg7$f%-w4*"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-if env("MODE")=="production":
+if env("MODE") == "production":
     DEBUG = False
 # True
 
@@ -131,8 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-
-
 STATIC_URL = "/static/"
 
 MEDIA_URL = "/images/"
@@ -144,7 +142,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "store/static")]
 
 STRIPE_PUBLIC_KEY = env("STRIPE_PUBLIC_KEY")
 
-STRIPE_PRIVATE_KEY = env("STRIPE_PRIVATE_KEY")
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 
 
 # EMAIL CONFIG
