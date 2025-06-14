@@ -1,4 +1,7 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
 <div class="row">
   <div class="col-lg-6">
     <div class="box-element" id="form-wrapper">
@@ -6,10 +9,10 @@
         {% csrf_token %}
         <div id="user-info">
           <div class="form-field">
-            <input required class="form-control" autocomplte="on" type="text" name="name" placeholder="Name.." />
+            <input required class="form-control" autocomplete="on" type="text" name="name" placeholder="Name.." />
           </div>
           <div class="form-field">
-            <input required class="form-control" autocomplte="on" type="email" name="email" placeholder="Email.." />
+            <input required class="form-control" autocomplete="on" type="email" name="email" placeholder="Email.." />
           </div>
         </div>
 
@@ -34,19 +37,11 @@
         <hr />
         <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue" />
       </form>
-      <form action='/create-checkout-session/2/' method="POST">
-        {% csrf_token %}
-        <button type="submit">Checkout</button>
-      </form>
 
-    </div>
-
-
-    <br />
-    <div class="box-element hidden" id="payment-info">
-      <small>Paypal Options</small>
+      <br />
+      <h4>Choose Payment Method:</h4>
+      <button id="stripe-button" class="btn btn-primary mb-3">Pay with Stripe</button>
       <div id="paypal-button-container"></div>
-      {% comment %} <button id="make-payment">Pay Now</button> {% endcomment %}
     </div>
   </div>
 
@@ -58,9 +53,6 @@
       <hr />
       {% for item in items %}
       <div class="cart-row">
-        {% comment %}
-        <span id="productId" style="visibility: hidden">{{item.product.id}}</span>
-        {% endcomment %}
         <div style="flex: 2">
           <img class="row-image" src="{{item.product.imageURL}}" />
         </div>
@@ -81,156 +73,125 @@
   </div>
 </div>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
-<script src="https://js.stripe.com/v3/"></script>
-
-<script
-  src="https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit"></script>
-
-<!-- WORKING  -->
-<!-- https://www.paypal.com/sdk/js?client-id=AW4XGhZOH-oRlEBTVJl13Ol1uWucXVfGNOnVZW8-nGV94rleh0Q9oc7lfWy_kqOspQ0llpQbbV17MPfg&currency=USD&disable-funding=credit -->
-
-<!-- SANDBOX -->
-<!-- <script src="https://www.paypal.com/sdk/js?client-id=ATYi5OGXSrsvkutswINYABq9ziIYhUN4ATNWc1MfjA105Vu_noDaBhlhiG-UNyi0TYcIFkqbKr-9pwmb&currency=USD&disable-funding=credit"></script> -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3485Y34LHZ"></script>
+<!-- Mock Checkout System -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
+    // Function to collect form data for the checkout process
+    function collectFormData() {
+        const form = document.getElementById('form');
+        const formData = new FormData(form);
+        
+        // Convert FormData to plain object
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        return data;
+    }
 
-  gtag("config", "G-3485Y34LHZ");
-</script>
-
-<script>
-  var total = "{{order.get_cart_total}}";
-  // Render the PayPal button into #paypal-button-container
-  paypal
-    .Buttons({
-      style: {
-        color: "black",
-        shape: "pill",
-      },
-      // Set up the transaction
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: parseFloat(total).toFixed(2),
-              },
+    // Stripe Payment Handler (now using mock system)
+    document.getElementById("stripe-button").addEventListener("click", function () {
+        // Collect form data first
+        const formData = collectFormData();
+        
+        // Validate form data
+        if (!formData.name || !formData.email || !formData.address || !formData.city || !formData.state || !formData.zipcode) {
+            showWarning("📝 Please fill in all required fields before proceeding with payment.");
+            return;
+        }
+        
+        // Add payment method to form data
+        formData.payment_method = 'stripe';
+        showInfo("🔄 Processing your order with Stripe...");
+        
+        fetch("{% url 'create_checkout_session' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
             },
-          ],
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.redirect_url) {
+                showSuccess("✅ Order processed successfully! Redirecting...");
+                // Redirect to the mock payment page
+                setTimeout(() => {
+                    window.location.href = data.redirect_url;
+                }, 1000);
+            } else {
+                throw new Error("No redirect URL returned");
+            }
+        })
+        .catch(error => {
+            showError("💳 Payment processing failed. Please check your information and try again.");
         });
-      },
+    });
 
-      // Finalize the transaction
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          // Show a success message to the buyer
-          submitFormData();
-        });
-      },
-    })
-    .render("#paypal-button-container");
 </script>
 
-<script type="text/javascript">
-  var shipping = '{{order.shipping}}'
-  var productIds = []
-  {% for item in items %}
-  productIds.push("{{item.product.id}}")
-  {% endfor %}
-  console.log("ids", productIds)
-
-  if (shipping == 'False') {
-    document.getElementById('shipping-info').innerHTML = ''
-  }
-
-
-  if (shipping == 'False' && user != 'AnonymousUser') {
-    document.getElementById('form-wrapper').classList.add('hidden');
-    document.getElementById('payment-info').classList.remove('hidden');
-  }
-
-  var form = document.getElementById('form')
-
-  csrftoken = form.getElementsByTagName("input")[0].value
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault()
-    console.log('Form Submitted..')
-
-    // submitFormData() //TEST PAYMENT
-
-    // document.getElementById('form-button').classList.add('hidden');
-    document.getElementById('payment-info').classList.remove('hidden');
-    setTimeout(function () {
-
-
-      window.scrollTo(0, document.body.scrollHeight);
-    }, 200);
-
-
-  })
-
-  // document.getElementById('make-payment').addEventListener('click', function(e){
-  //     submitFormData()
-  // })
-
-  function submitFormData() {
-    console.log('Payment Button Clicked')
-
-
-    var userFormData = {
-      'name': null,
-      'email': null,
-      'total': total,
+<!-- PayPal Mock Checkout -->
+<script>
+    // Create a PayPal button that integrates with our mock system
+    function createPayPalButton() {
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = '<button id="paypal-mock-button" class="btn btn-warning btn-block">Pay with PayPal</button>';
+        
+        document.getElementById('paypal-mock-button').addEventListener('click', function() {
+            // Collect form data first
+            const formData = collectFormData();
+            
+            // Validate form data
+            if (!formData.name || !formData.email || !formData.address || !formData.city || !formData.state || !formData.zipcode) {
+                showWarning("📝 Please fill in all required fields before proceeding with payment.");
+                return;
+            }
+            
+            // Add payment method to form data
+            formData.payment_method = 'paypal';
+            showInfo("🔄 Processing your order with PayPal...");
+            
+            fetch("{% url 'create_checkout_session' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.redirect_url) {
+                    showSuccess("✅ Order processed successfully! Redirecting...");
+                    // Redirect to the mock payment page
+                    setTimeout(() => {
+                        window.location.href = data.redirect_url;
+                    }, 1000);
+                } else {
+                    throw new Error("No redirect URL returned");
+                }
+            })
+            .catch(error => {
+                showError("💳 Payment processing failed. Please check your information and try again.");
+            });
+        });
     }
-    var shippingInfo = {
-      'address': null,
-      'city': null,
-      'state': null,
-      'zipcode': null,
-    }
-
-    if (shipping != 'False') {
-      shippingInfo.address = form.address.value
-      shippingInfo.city = form.city.value
-      shippingInfo.state = form.state.value
-      shippingInfo.zipcode = form.zipcode.value
-
-    }
-
-
-    userFormData.name = form.name.value
-    userFormData.email = form.email.value
-    shippingInfo.email = form.email.value
-
-
-    var url = "/process_order/"
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken,
-      },
-      body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo, 'product': productIds }),
-    })
-      .then((respone) => respone.json())
-      .then((data) => {
-        console.log('Success:', form.email.value);
-        alert('Transaction completed , confirmation was sent to ' + form.email.value + ' If you do not see the email in a few minutes, check your “junk mail” folder or “spam” folder. We make every effort to ensure that these emails are delivered. If you do not see the email in your inbox, please check your junk mail folder and add "support@milliyar.com” to your White List or Safe Sender List. ');
-
-
-        cart = {}
-        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain= ;path=/"
-
-        window.location.href = "{% url 'home' %}"
-      })
-  }
+    
+    // Initialize the PayPal button when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        createPayPalButton();
+    });
 </script>
 
-{% endblock content %}
+{% endblock %}

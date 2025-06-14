@@ -33,18 +33,40 @@ def guestOrder(request, data):
 
 
 def cartData(request):
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    #     items = order.orderitem_set.all()
-
-    #     cartItems = order.get_cart_items
-    # else:
-    cookieData = cookieCart(request)
-    items = cookieData["items"]
-    order = cookieData["order"]
-    cartItems = cookieData["cartItems"]
-    return {"cartItems": cartItems, "order": order, "items": items}
+    if request.user.is_authenticated:
+        # Authenticated user - use database cart
+        try:
+            customer = Customer.objects.get(user=request.user)
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
+            
+            # Convert to the format expected by templates
+            formatted_items = []
+            for item in items:
+                formatted_items.append({
+                    'product': {
+                        'id': item.product.id,
+                        'name': item.product.name,
+                        'price': item.product.price,
+                        'imageURL': item.product.imageURL,
+                    },
+                    'quantity': item.quantity,
+                    'get_total': item.get_total,
+                    'in_stock': item.product.in_stock
+                })
+            
+            return {"cartItems": cartItems, "order": order, "items": formatted_items}
+        except Customer.DoesNotExist:
+            # Customer doesn't exist yet, return empty cart
+            return {"cartItems": 0, "order": {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}, "items": []}
+    else:
+        # Anonymous user - use cookie cart
+        cookieData = cookieCart(request)
+        items = cookieData["items"]
+        order = cookieData["order"]
+        cartItems = cookieData["cartItems"]
+        return {"cartItems": cartItems, "order": order, "items": items}
 
 
 def cookieCart(request):

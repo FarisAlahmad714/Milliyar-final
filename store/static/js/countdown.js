@@ -113,6 +113,14 @@ window.onload = function () {
   let seconds = Math.floor((time / 1000) % 60);
   let total = time;
 
+  // Don't show countdown on success/cancel pages
+  const currentPath = window.location.pathname;
+  if (currentPath.includes('/success/') || currentPath.includes('/cancel/')) {
+    document.getElementById("geeks-countdown").style.display = "none";
+    document.getElementById("maincontainer").style.display = "block";
+    return;
+  }
+
   if (hours <= 0 && days <= 0 && minutes <= 0 && seconds <= 0) {
     document.getElementById("geeks-countdown").style.display = "none";
   } else {

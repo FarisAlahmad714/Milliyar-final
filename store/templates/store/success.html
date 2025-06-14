@@ -1,0 +1,70 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <div class="box-element text-center">
+      <h2 style="color: #28a745;">Order Successful!</h2>
+      <div style="font-size: 72px; color: #28a745; margin: 20px 0;">
+        ✓
+      </div>
+      <h4>Thank you for your purchase!</h4>
+      <p>Your order has been successfully processed and you will receive a confirmation email shortly.</p>
+      
+      <div style="margin: 30px 0;">
+        <p><strong>Order Details:</strong></p>
+        <p>A confirmation email has been sent to your email address with all the order details.</p>
+      </div>
+      
+      <div style="margin-top: 30px;">
+        <a href="{% url 'shop' %}" class="btn btn-primary" style="margin: 10px;">Continue Shopping</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary" style="margin: 10px;">Go to Home</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.box-element {
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin: 20px 0;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+  color: white;
+  text-decoration: none;
+}
+</style>
+{% endblock content %}

@@ -7,43 +7,35 @@ for (i = 0; i < updateBtns.length; i++) {
     var productName = this.dataset.name;
     var price = this.dataset.price;
     var stock = this.dataset.stock;
-    console.log(
-      "productId :",
-      productId,
-      "action:",
-      action,
-      "name",
-      productName,
-      "stock",
-      stock,
-      "price",
-      price
-    );
-    console.log("hello");
-    console.log("USER:", user);
+    // User interaction detected - product operation starting
 
-    // if (user == "AnonymousUser") {
-    addCookieItem(productId, action, productName, price, stock);
-    // } else {
-    // updateUserOrder(productId, action, productName, stock);
-    // }
+    if (user == "AnonymousUser") {
+      addCookieItem(productId, action, productName, price, stock);
+    } else {
+      updateUserOrder(productId, action, productName, stock);
+    }
   });
 }
 
 function addCookieItem(productId, action, productName, price, stock) {
-  console.log("Not Logged In");
   if (action == "add") {
     if (cart[productId] == undefined) {
-      alert(`"${productName}" ` + " is Successfully added");
       cart[productId] = { quantity: 1 };
+      if (typeof showSuccess === 'function') {
+        showSuccess(`✨ "${productName}" added to your collection!`);
+      }
     } else {
       if (stock <= cart[productId].quantity) {
-        alert(
-          `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
-        );
+        if (typeof showWarning === 'function') {
+          showWarning(
+            `📦 Limited edition item out of stock! Follow us on social media for the next drop.`
+          );
+        }
       } else {
         cart[productId]["quantity"] += 1;
-        alert(`"${productName}" ` + " is Successfully added");
+        if (typeof showSuccess === 'function') {
+          showSuccess(`🎉 Another "${productName}" added to cart!`);
+        }
       }
     }
   }
@@ -86,6 +78,9 @@ function addCookieItem(productId, action, productName, price, stock) {
 
         if (cart[productId]["quantity"] <= 0) {
           delete cart[productId];
+          if (typeof showInfo === 'function') {
+            showInfo(`🗑️ "${productName}" removed from cart`);
+          }
           location.reload();
         }
       }
@@ -119,16 +114,18 @@ function addCookieItem(productId, action, productName, price, stock) {
   }
 
   if (action == "addcart") {
-    // alert("Product is Successfully add" + productName);
-
     if (cart[productId] == undefined) {
       cart[productId] = { quantity: 1 };
+      if (typeof showSuccess === 'function') {
+        showSuccess(`✨ "${productName}" added to your collection!`);
+      }
     } else {
-      console.log(stock, "stk", cart[productId].quantity);
       if (Number(stock) <= cart[productId].quantity) {
-        alert(
-          `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
-        );
+        if (typeof showWarning === 'function') {
+          showWarning(
+            `📦 Limited edition item out of stock! Follow us on social media for the next drop.`
+          );
+        }
       } else {
         cart[productId]["quantity"] += 1;
         let cartitem = 0;
@@ -155,6 +152,9 @@ function addCookieItem(productId, action, productName, price, stock) {
           totalCart += cart[property]["quantity"];
         }
         document.getElementById("totalCartItems").innerHTML = totalCart;
+        if (typeof showSuccess === 'function') {
+          showSuccess(`🛒 "${productName}" quantity updated!`);
+        }
       }
     }
   }
@@ -169,8 +169,9 @@ function addCookieItem(productId, action, productName, price, stock) {
 }
 
 function updateUserOrder(productId, action, productName, stock) {
-  console.log("User is logged in ,sending data..");
-  console.log(stock);
+  if (typeof showInfo === 'function') {
+    showInfo("🔄 Updating your cart...");
+  }
   var url = "/update_item/";
 
   fetch(url, {
@@ -189,19 +190,38 @@ function updateUserOrder(productId, action, productName, stock) {
       return response.json();
     })
     .then((data) => {
-      // console.log("data:", data);
+      if (data.error) {
+        if (typeof showError === 'function') {
+          showError(data.error);
+        }
+        return;
+      }
+      
       if (action == "add" || action == "addcart") {
         if (stock <= data.quantity) {
-          alert(
-            `We regret that these collections are limited and we are out of stock, keep your eyes on our next collection drop by following us on social media!`
-          );
+          if (typeof showWarning === 'function') {
+            showWarning(
+              `📦 Limited edition item out of stock! Follow us on social media for the next drop.`
+            );
+          }
         } else {
           if (action == "add") {
-            alert(`"${productName}" ` + " is Successfully added");
+            if (typeof showSuccess === 'function') {
+              showSuccess(`✨ "${productName}" added to your collection!`);
+            }
           }
+        }
+      } else if (action == "remove") {
+        if (typeof showInfo === 'function') {
+          showInfo(`➖ "${productName}" quantity updated`);
         }
       }
 
       location.reload();
+    })
+    .catch((error) => {
+      if (typeof showError === 'function') {
+        showError("⚠️ Something went wrong. Please try again.");
+      }
     });
 }

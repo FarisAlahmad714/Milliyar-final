@@ -95,10 +95,14 @@
     var cart = JSON.parse(getCookie('cart'))
     if (cart == undefined) {
       cart = {}
-      console.log('Cart was created ')
       document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+      // Show welcome message only on first visit
+      setTimeout(() => {
+        if (document.body) {
+          showInfo('🛍️ Welcome to Milliyar! Your shopping cart is ready.');
+        }
+      }, 1000);
     }
-    console.log('Cart:', cart)
 
 
   </script>
@@ -489,7 +493,106 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static 'js/countdown.js'%}"></script>
 
-  <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/cart.js'%}?v=2"></script>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999; max-width: 350px;">
+    <!-- Toast notifications will be inserted here dynamically -->
+  </div>
+
+  <!-- Toast Notification JavaScript -->
+  <script>
+    // Toast notification system
+    function showToast(message, type = 'success', duration = 4000) {
+      const toastContainer = document.getElementById('toast-container');
+      
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.style.cssText = `
+        background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : type === 'warning' ? '#ffc107' : '#17a2b8'};
+        color: white;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+        max-width: 350px;
+        word-wrap: break-word;
+      `;
+      
+      // Add close button
+      const closeBtn = document.createElement('span');
+      closeBtn.innerHTML = '×';
+      closeBtn.style.cssText = `
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        opacity: 0.7;
+      `;
+      closeBtn.onclick = () => removeToast(toast);
+      
+      // Add icon based on type
+      const icon = document.createElement('span');
+      icon.style.cssText = 'margin-right: 10px; font-weight: bold;';
+      icon.innerHTML = type === 'success' ? '✓' : type === 'error' ? '✗' : type === 'warning' ? '⚠' : 'ℹ';
+      
+      toast.appendChild(icon);
+      toast.appendChild(document.createTextNode(message));
+      toast.appendChild(closeBtn);
+      
+      toastContainer.appendChild(toast);
+      
+      // Animate in
+      setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(0)';
+      }, 10);
+      
+      // Auto remove
+      setTimeout(() => {
+        removeToast(toast);
+      }, duration);
+    }
+    
+    function removeToast(toast) {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }
+    
+    // Global success messages
+    window.showSuccess = (message) => showToast(message, 'success');
+    window.showError = (message) => showToast(message, 'error');
+    window.showWarning = (message) => showToast(message, 'warning');
+    window.showInfo = (message) => showToast(message, 'info');
+    
+    // Override alert() to use toast notifications instead
+    window.alert = function(message) {
+      if (message.toLowerCase().includes('success') || message.toLowerCase().includes('added')) {
+        showSuccess(`✨ ${message}`);
+      } else if (message.toLowerCase().includes('error') || message.toLowerCase().includes('failed')) {
+        showError(`⚠️ ${message}`);
+      } else if (message.toLowerCase().includes('out of stock') || message.toLowerCase().includes('limited')) {
+        showWarning(`📦 ${message}`);
+      } else {
+        showInfo(`ℹ️ ${message}`);
+      }
+    };
+  </script>
 
 </body>
 
