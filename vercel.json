@@ -6,8 +6,7 @@
       "use": "@vercel/python",
       "config": { 
         "maxLambdaSize": "15mb", 
-        "runtime": "python3.11",
-        "includeFiles": "**"
+        "runtime": "python3.11"
       }
     }
   ],
@@ -20,8 +19,5 @@
       "src": "/(.*)",
       "dest": "EcomProj/wsgi.py"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "."
-  }
-}                       
+  ]
+}                             
