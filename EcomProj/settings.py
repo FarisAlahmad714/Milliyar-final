@@ -89,11 +89,10 @@ WSGI_APPLICATION = "EcomProj.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": dj_database_url.parse(env("DATABASE_URL", default="sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")))
 }
 
 
@@ -176,6 +175,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 # env=("PASSWORD")
+
+# Default primary key field type for Django 3.2+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Logging Configuration
 LOGGING = {
