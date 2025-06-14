@@ -17,4 +17,5 @@ urlpatterns = [
     path('create-checkout-session/', views.CreateCheckoutSessionView.as_view(), name='create_checkout_session'),
     path('success/', views.payment_success, name='payment_success'),
     path('cancel/', views.payment_cancel, name='payment_cancel'),
+    path('health/', views.health_check, name='health_check'),
 ]

@@ -36,6 +36,11 @@ logger = logging.getLogger(__name__)
 def page_not_found_view(request, exception):
     return render(request, "404.html", status=404)
 
+def health_check(request):
+    """Simple health check endpoint for Vercel"""
+    from django.http import JsonResponse
+    return JsonResponse({"status": "ok", "message": "Django is running on Vercel"})
+
 
 @cache_page(60 * 15)  # Cache for 15 minutes
 def home(request):

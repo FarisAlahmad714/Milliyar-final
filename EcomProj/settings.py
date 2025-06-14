@@ -18,7 +18,12 @@ env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# Try to read .env file, but don't fail if it doesn't exist (for Vercel)
+try:
+    environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+except:
+    pass
 
 
 
